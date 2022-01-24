@@ -6,13 +6,13 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/24 13:22:52 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/24 13:35:27 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRCS = 	main.c \
+SRCS = 	main.c
 
 OBJS = ${SRCS:.c=.o}
 
