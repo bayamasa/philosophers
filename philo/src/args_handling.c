@@ -6,12 +6,14 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 17:09:18 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 07:09:37 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+// 各バリデーションが同じ条件になったからまとめてもいいかも
+// msgを個別に定義するために、第3引数にmsgをポインタでもってもいいかも。
 size_t	validate_philo_num(const char *str, int *status)
 {
 	size_t	val;
@@ -28,8 +30,8 @@ size_t	validate_time(const char *str, int *status)
 	int	val;
 
 	val = ft_atoi_error(str, status);
-	// timeは負の値を取らない。
-	if (val < 0)
+	// timeは1以上とする
+	if (val <= 0)
 		*status = false;
 	return (val);
 }
