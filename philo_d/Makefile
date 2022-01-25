@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/25 16:30:33 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/25 16:41:33 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/25 22:25:37 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ all: ${NAME}
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(INC) $(OBJS) -o $(NAME)
 
-.c.o:
-		${CC} ${CFLAGS} $(INC) -c $< -o ${<:.c=.o}
+%.o : %.c
+		${CC} ${CFLAGS} $(INC) -c $< -o $@
 clean: 
 	${RM} ${OBJS}
 fclean: clean
