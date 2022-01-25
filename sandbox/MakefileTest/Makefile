@@ -16,4 +16,15 @@ all: b/bar
 clean:
 	gcc foo.c -o foo
 
+hello: hoge fuga
+	@echo $^
+
+hoge: piyo
+	@echo hogehoge
+fuga:
+	@echo fugafuga
+
+piyo:
+	@echo piyopiyo
+
 .PHONY: clean 
