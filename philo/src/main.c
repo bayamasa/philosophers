@@ -6,33 +6,35 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 22:29:00 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 07:16:49 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void *thread_func(void *stat)
+void *thread_func(void *attr)
 {
-	t_status *s;
-	s = (t_status *)stat;
+	t_philo_attr *a;
+
+	a = (t_philo_attr *)attr;
 	return (0);
 }
 
 
 int	main(int argc, char const *argv[])
 {
-	size_t		i;
-	int			status;
-	t_status	stat;
-	pthread_t	thread;
+	size_t			i;
+	int				status;
+	t_philo_attr	attr;
+	pthread_t		thread;
 
 	i = 0;
-	if (!check_args(argc, argv, &stat))
+	if (!check_args(argc, argv, &attr))
 		return (EXIT_FAILURE);
-	while (i < stat.philo_num)
+	init_all_status(&attr);
+	while (i < attr.philo_num)
 	{
-		status = pthread_create(&thread, NULL, thread_func, (&stat));
+		status = pthread_create(&thread, NULL, thread_func, (&attr));
 	}
 	
 	return (0);

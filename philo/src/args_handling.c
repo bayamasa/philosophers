@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 07:09:37 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 07:16:00 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ size_t	validate_eat_limit(const char *str, int *status)
 }
 
 
-int	check_args(int argc, const char *argv[], t_status *s)
+int	check_args(int argc, const char *argv[], t_philo_attr *a)
 {
 	int	status;
 
 	if (argc != 5 && argc != 6)
 		return (abort_philo_msg(ARGS_ERROR));
 	status = true;
-	s->philo_num = validate_philo_num(argv[1], &status);
-	s->die_t = validate_time(argv[2], &status);
-	s->eat_t = validate_time(argv[3], &status);
-	s->sleep_t = validate_time(argv[4], &status);
+	a->philo_num = validate_philo_num(argv[1], &status);
+	a->die_t = validate_time(argv[2], &status);
+	a->eat_t = validate_time(argv[3], &status);
+	a->sleep_t = validate_time(argv[4], &status);
 	if (argc == 6)
-		s->meal_limits = ft_atoi_error(argv[5], &status);
+		a->meal_limits = ft_atoi_error(argv[5], &status);
 	if (status == false)
 		return (abort_philo_msg(ARGS_ERROR));
 	return (true);
