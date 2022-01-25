@@ -6,31 +6,39 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/24 13:35:27 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/25 09:06:37 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRCS = 	main.c
+# NAMEとDIR名がかぶっているので実行ファイルが作成できない問題を解決する
+SRCDIR = ./philo_d/src/
+SRCNAME = 	main.c \
+			args_handling.c \
+			error_handling.c \
+
+SRCS = $(addprefix $(SRCDIR), $(SRCNAME))
 
 OBJS = ${SRCS:.c=.o}
 
+
 CC = gcc 
 CFLAGS = -Wall -Werror -Wextra
+INC = -I ./philo_d/includes/
 all: ${NAME}
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INC) $(OBJS) -o $(NAME)
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} $(INC) -c $< -o ${<:.c=.o}
 
 clean: 
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME} ${lst_NAME} ${lst_OBJS}
+	${RM} ${NAME} 
 re:		fclean all
 
 .PHONY: all clean fclean re .c.o
