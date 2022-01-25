@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:06:06 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 16:25:44 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:45:23 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ size_t	ft_atoi_error(const char *str, int *status)
 {
 	long long	ret;
 
-	*status = true;
 	if (ft_strlen(str) == 0 || !ft_isdigit(*str))
 		*status = false;
 	if (*str == '0')

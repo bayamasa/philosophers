@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 16:42:13 by mhirabay         ###   ########.fr       */
+/*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
+/*   Updated: 2022/01/25 16:40:09 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char const *argv[])
+size_t	ft_strlen(const char *str)
 {
-	t_status	stat;
+	size_t	i;
 
-	if (!check_args(argc, argv, &stat))
-		return (EXIT_FAILURE);
-	
-	return (0);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
-

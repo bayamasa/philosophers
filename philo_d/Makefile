@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/25 16:30:33 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/25 16:36:06 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/25 16:41:33 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCNAME = 	main.c \
 			args_handling.c \
 			error_handling.c \
 			philo_utils.c \
+			philo_utils_2.c \
 
 SRCS = $(addprefix $(SRCDIR), $(SRCNAME))
 

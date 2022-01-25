@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 16:29:20 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:07:06 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,17 @@ int			ft_isspace(char a);
 long long	ft_strtoll(const char *str, int *status);
 void		ft_putstr_fd(char *s, int fd);
 
+// philo_utils_2.c
+size_t		ft_strlen(const char *str);
+
 // error_handling.c
 int			abort_philo_msg(char *msg);
+
+// args_handling.c
+int			check_args(int argc, const char **argv, t_status *s);
+size_t		validate_philo_num(const char *str, int *status);
+size_t		validate_time(const char *str, int *status);
+size_t		validate_eat_limit(const char *str, int *status);
 
 
 #endif
