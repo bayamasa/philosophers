@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/25 17:07:06 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 07:11:14 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_status {
 	size_t	die_t;
 	size_t	sleep_t;
 	size_t	meal_limits;
+	size_t	fork_num;
+	int		is_dead;
 }	t_status;
 
 
