@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 10:52:10 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:20:38 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ARGS_ERROR "args error\n"
 # define MALLOC_ERROR "malloc error\n"
 # define CREATE_THREAD_ERROR "create thread error\n"
+# define JOIN_THREAD_ERROR "join thread error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 
 typedef struct s_philo_attr {
@@ -65,5 +66,9 @@ int			init_all_attr(t_philo_attr *a);
 
 // debug.c
 void		print_all_fork_status(t_philo_attr *a);
+void		debug_thread_start(size_t count);
+
+// simulation.c
+int			start_simulation(t_philo_attr *a);
 
 #endif
