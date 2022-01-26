@@ -60,7 +60,7 @@ size_t		validate_philo_num(const char *str, int *status);
 size_t		validate_time(const char *str, int *status);
 size_t		validate_eat_limit(const char *str, int *status);
 
-// init_attr.c
+// init.c
 int			init_all_attr(t_philo_attr *a);
 
 // debug.c
