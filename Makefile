@@ -23,7 +23,7 @@ OBJS 	:= $(addprefix $(OBJSDIR), $(SRCS:%.c=%.o))
 
 CC		:= gcc 
 CFLAGS	:= -Wall -Werror -Wextra
-DFLAGS	:= -g -fsanitize=thread
+DEBUG	:= -g -fsanitize=thread
 INC		:= -I ./philo/includes/
 RM		:= rm -rf
 all: ${EXEC}
