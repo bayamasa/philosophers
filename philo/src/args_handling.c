@@ -56,7 +56,7 @@ int	check_args(int argc, const char *argv[], t_philo_attr *a)
 	if (argc != 5 && argc != 6)
 		return (abort_philo_msg(ARGS_ERROR));
 	status = true;
-	a->philo_num = validate_philo_num(argv[1], &status);
+	a->philo_count = validate_philo_num(argv[1], &status);
 	a->die_t = validate_time(argv[2], &status);
 	a->eat_t = validate_time(argv[3], &status);
 	a->sleep_t = validate_time(argv[4], &status);

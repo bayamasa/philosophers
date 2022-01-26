@@ -26,12 +26,12 @@
 # define MALLOC_ERROR "malloc error\n"
 
 typedef struct s_philo_attr {
-	size_t	philo_num;
+	size_t	philo_count;
 	size_t	eat_t;
 	size_t	die_t;
 	size_t	sleep_t;
 	size_t	meal_limits;
-	size_t	fork_num;
+	size_t	fork_count;
 	int		*is_fork_taken;
 }	t_philo_attr;
 
