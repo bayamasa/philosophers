@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 07:27:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 09:25:00 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define STR_BUFF_SIZE 1000000
 # define ERROR "Error\n"
 # define ARGS_ERROR "args error\n"
+# define MALLOC_ERROR "malloc error\n"
 
 typedef struct s_philo_attr {
 	size_t	philo_num;
@@ -30,6 +32,7 @@ typedef struct s_philo_attr {
 	size_t	sleep_t;
 	size_t	meal_limits;
 	size_t	fork_num;
+	int		*is_fork_taken;
 }	t_philo_attr;
 
 
@@ -51,6 +54,9 @@ int			check_args(int argc, const char **argv, t_philo_attr *a);
 size_t		validate_philo_num(const char *str, int *status);
 size_t		validate_time(const char *str, int *status);
 size_t		validate_eat_limit(const char *str, int *status);
+
+// init_attr.c
+int			init_all_attr(t_philo_attr *a);
 
 
 #endif
