@@ -58,5 +58,7 @@ size_t		validate_eat_limit(const char *str, int *status);
 // init_attr.c
 int			init_all_attr(t_philo_attr *a);
 
+// debug.c
+void		print_all_fork_status(t_philo_attr *a);
 
 #endif
