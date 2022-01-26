@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/25 23:47:39 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/26 10:38:01 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ CFLAGS	:= -Wall -Werror -Wextra
 DEBUG	:= -g -fsanitize=thread
 INC		:= -I ./philo/includes/
 RM		:= rm -rf
+
+# NAMEというコマンドは必須らしい
 all: ${EXEC}
 
 $(EXEC) : $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 09:25:00 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 10:52:10 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include <string.h>
+# include <sys/time.h>
 
 # define STR_BUFF_SIZE 1000000
 # define ERROR "Error\n"
 # define ARGS_ERROR "args error\n"
 # define MALLOC_ERROR "malloc error\n"
+# define CREATE_THREAD_ERROR "create thread error\n"
+# define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 
 typedef struct s_philo_attr {
 	size_t	philo_count;
@@ -48,6 +51,8 @@ size_t		ft_strlen(const char *str);
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
+int			abort_philo_msg_with_free(char *msg, t_philo_attr *a);
+
 
 // args_handling.c
 int			check_args(int argc, const char **argv, t_philo_attr *a);
