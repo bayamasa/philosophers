@@ -6,20 +6,26 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/26 14:26:16 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/26 21:17:46 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= philo
-DIR 	:= ./philo/
+SRCDIR 	:= ./src/
+SRCNAME	:=	act.c \
+			args_handling.c \
+			debug.c \
+			error_handling.c \
+			init.c \
+			main.c \
+			philo_utils.c \
+			philo_utils_2.c \
+			print_act.c \
+			simulation.c \
 
-EXEC 	:= $(addprefix $(DIR), $(NAME))
-
-SRCDIR 	:= $(addprefix $(DIR), src/)
-SRCS 	:= $(shell cd $(SRCDIR) && echo *.c)
-
-OBJSDIR	:= $(addprefix $(DIR), obj/)
-OBJS 	:= $(addprefix $(OBJSDIR), $(SRCS:%.c=%.o))
+SRCS	:= $(addprefix $(SRCDIR), $(SRCNAME))
+OBJSDIR	:= ./obj/
+OBJS 	:= $(addprefix $(OBJSDIR), $(SRCNAME:%.c=%.o))
 
 CC		:= gcc 
 CFLAGS	:= -Wall -Werror -Wextra -g -pthread
@@ -27,10 +33,9 @@ DEBUG	:= -g -fsanitize=thread
 INC		:= -I ./philo/includes/
 RM		:= rm -rf
 
-# NAMEというコマンドは必須らしい
-all: ${EXEC}
+all: $(NAME)
 
-$(EXEC) : $(OBJS)
+$(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(INC) $^ -o $@
 
 $(OBJSDIR)%.o : $(SRCDIR)%.c
@@ -41,7 +46,7 @@ clean:
 	$(RM) $(OBJSDIR)
 
 fclean: clean
-	${RM} ${EXEC} 
+	${RM} ${NAME} 
 re:	fclean all
 
 debug:	CFLAGS += $(DEBUG)
