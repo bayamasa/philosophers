@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 07:16:11 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 07:27:33 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_philo_attr {
 	size_t	sleep_t;
 	size_t	meal_limits;
 	size_t	fork_num;
-	int		is_dead;
 }	t_philo_attr;
 
 
