@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 15:20:38 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:24:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 
 # define STR_BUFF_SIZE 1000000
+# define USEC_DIGITS 1000000
 # define ERROR "Error\n"
 # define ARGS_ERROR "args error\n"
 # define MALLOC_ERROR "malloc error\n"
@@ -37,8 +38,11 @@ typedef struct s_philo_attr {
 	size_t	meal_limits;
 	size_t	fork_count;
 	int		*is_fork_taken;
+	size_t	philo_num;
+	int		test;
+	size_t	start_t;
+	size_t	ate_t;
 }	t_philo_attr;
-
 
 // philo_utils.c
 int			ft_isdigit(int c);
@@ -49,11 +53,11 @@ void		ft_putstr_fd(char *s, int fd);
 
 // philo_utils_2.c
 size_t		ft_strlen(const char *str);
+size_t		gettime(void);
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
 int			abort_philo_msg_with_free(char *msg, t_philo_attr *a);
-
 
 // args_handling.c
 int			check_args(int argc, const char **argv, t_philo_attr *a);
@@ -70,5 +74,19 @@ void		debug_thread_start(size_t count);
 
 // simulation.c
 int			start_simulation(t_philo_attr *a);
+
+// print_act.c
+void		print_act_take_fork(size_t philo, size_t time);
+void		print_act_eating(size_t philo, size_t time);
+void		print_act_sleeping(size_t philo, size_t time);
+void		print_act_thinking(size_t philo, size_t time);
+void		print_act_died(size_t philo, size_t time);
+
+// act.c
+int			take_fork(t_philo_attr *a, size_t p_no);
+int			take_down_fork(t_philo_attr *a, size_t p_no);
+void		eating(t_philo_attr *a, size_t p_no);
+void		sleeping(t_philo_attr *a, size_t p_no);
+void		thinking(size_t p_no);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 14:21:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:40:27 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_all_fork_status(t_philo_attr *a)
 	size_t	i;
 
 	i = 0;
-	printf("a->fork_count = %zu\n", a->fork_count);
+	printf("a->fork_count = %zu \n", a->fork_count);
 	printf("print_all_fork_status start\n");
 	while (i < a->fork_count)
 	{
