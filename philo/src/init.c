@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 17:52:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 06:52:41 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int	init(t_sim_stat *s, const char *argv[])
 		return (abort_philo_msg_with_free(MALLOC_ERROR, s));
 	// 最初に全部0埋め
 	memset(s->is_fork_taken, false, s->fork_count);
+	s->is_someone_dead = false;
 	return (true);
 }
