@@ -21,6 +21,12 @@
 # include <string.h>
 # include <sys/time.h>
 
+# define NUMBER_OF_PHILOSOPHERS 1
+# define TIME_TO_DIE 2
+# define TIME_TO_EAT 3
+# define TIME_TO_SLEEP 4
+# define NUMBER_OF_TIMES_PHILO_MUST_EAT 5
+
 # define STR_BUFF_SIZE 1000000
 # define USEC_DIGITS 1000000
 # define ERROR "Error\n"

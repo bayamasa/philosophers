@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:57:58 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // 各バリデーションが同じ条件になったからまとめてもいいかも
 // msgを個別に定義するために、第3引数にmsgをポインタでもってもいいかも。
-size_t	validate_philo_num(const char *str, int *status)
+void	validate_philo_count(const char *str, int *status)
 {
 	size_t	val;
 
@@ -25,7 +25,7 @@ size_t	validate_philo_num(const char *str, int *status)
 	return (val);
 }
 
-size_t	validate_time(const char *str, int *status)
+void	validate_time(const char *str, int *status)
 {
 	int	val;
 
@@ -36,8 +36,7 @@ size_t	validate_time(const char *str, int *status)
 	return (val);
 }
 
-
-size_t	validate_eat_limit(const char *str, int *status)
+void	validate_eat_limit(const char *str, int *status)
 {
 	int	val;
 
@@ -48,7 +47,6 @@ size_t	validate_eat_limit(const char *str, int *status)
 	return (val);
 }
 
-
 int	check_args(int argc, const char *argv[], t_sim_stat *a)
 {
 	int	status;
@@ -56,12 +54,12 @@ int	check_args(int argc, const char *argv[], t_sim_stat *a)
 	if (argc != 5 && argc != 6)
 		return (abort_philo_msg(ARGS_ERROR));
 	status = true;
-	a->philo_count = validate_philo_num(argv[1], &status);
-	a->die_t = validate_time(argv[2], &status);
-	a->eat_t = validate_time(argv[3], &status);
-	a->sleep_t = validate_time(argv[4], &status);
+	validate_philo_count(argv[NUMBER_OF_PHILOSOPHERS], &status);
+	validate_time(argv[TIME_TO_DIE], &status);
+	validate_time(argv[TIME_TO_EAT], &status);
+	validate_time(argv[TIME_TO_SLEEP], &status);
 	if (argc == 6)
-		a->meal_limits = ft_atoi_error(argv[5], &status);
+		ft_atoi_error(argv[NUMBER_OF_TIMES_PHILO_MUST_EAT], &status);
 	if (status == false)
 		return (abort_philo_msg(ARGS_ERROR));
 	return (true);
