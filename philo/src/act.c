@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 19:51:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 06:39:37 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	take_down_fork(t_sim_stat *s, size_t philo_i)
 		printf("dame unlock\n");
 		return (false);
 	}
+	print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
 	return (0);
 }
 

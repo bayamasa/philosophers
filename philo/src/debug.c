@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 06:38:12 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ void	print_all_fork_status(t_sim_stat *a)
 void	debug_thread_start(size_t count)
 {
 	printf("thread num = %zu start\n", count);
+}
+
+void	print_act_takedown_fork(size_t philo, size_t time)
+{
+	printf("%zu %zu has taken down a fork debug\n", time, philo);
 }
