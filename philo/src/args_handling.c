@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 15:57:58 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:42:26 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	validate_philo_count(const char *str, int *status)
 	// valは1以上である。
 	if (val <= 0)
 		*status = false;
-	return (val);
 }
 
 void	validate_time(const char *str, int *status)
@@ -33,7 +32,6 @@ void	validate_time(const char *str, int *status)
 	// timeは1以上とする
 	if (val <= 0)
 		*status = false;
-	return (val);
 }
 
 void	validate_eat_limit(const char *str, int *status)
@@ -44,10 +42,9 @@ void	validate_eat_limit(const char *str, int *status)
 	// eat_limitは1以上である(予定)
 	if (val <= 0)
 		*status = false;
-	return (val);
 }
 
-int	check_args(int argc, const char *argv[], t_sim_stat *a)
+int	check_args(int argc, const char *argv[])
 {
 	int	status;
 
@@ -59,7 +56,7 @@ int	check_args(int argc, const char *argv[], t_sim_stat *a)
 	validate_time(argv[TIME_TO_EAT], &status);
 	validate_time(argv[TIME_TO_SLEEP], &status);
 	if (argc == 6)
-		ft_atoi_error(argv[NUMBER_OF_TIMES_PHILO_MUST_EAT], &status);
+		ft_atoi_error(argv[TIMES_PHILO_MUST_EAT], &status);
 	if (status == false)
 		return (abort_philo_msg(ARGS_ERROR));
 	return (true);

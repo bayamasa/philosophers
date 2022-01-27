@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/26 21:17:46 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/27 17:01:26 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCNAME	:=	act.c \
 			philo_utils_2.c \
 			print_act.c \
 			simulation.c \
+			monitor.c \
 
 SRCS	:= $(addprefix $(SRCDIR), $(SRCNAME))
 OBJSDIR	:= ./obj/
