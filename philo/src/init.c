@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 17:00:38 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:52:23 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	init_philo_attr(t_sim_stat *s, const char *argv[])
 		return (false);
 	while (i < s->philo_count)
 	{
-		s->p_attr->num = i + 1;
-		s->p_attr->die_t = ft_atoi_error(argv[TIME_TO_DIE], &status);
-		s->p_attr->eat_t = ft_atoi_error(argv[TIME_TO_EAT], &status);
-		s->p_attr->sleep_t = ft_atoi_error(argv[TIME_TO_SLEEP], &status);
+		s->p_attr[i].num = i + 1;
+		s->p_attr[i].die_t = ft_atoi_error(argv[TIME_TO_DIE], &status);
+		s->p_attr[i].eat_t = ft_atoi_error(argv[TIME_TO_EAT], &status);
+		s->p_attr[i].sleep_t = ft_atoi_error(argv[TIME_TO_SLEEP], &status);
 		// TODO: 下2つは必要かどうかわからんけど一応
-		s->p_attr->start_t = 0;
-		s->p_attr->ate_t = 0;
+		s->p_attr[i].start_t = 0;
+		s->p_attr[i].ate_t = 0;
 		i++;
 	}
 	return (true);
