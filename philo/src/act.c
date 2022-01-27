@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 16:33:16 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:51:33 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int	take_fork(t_sim_stat *s, size_t philo_i)
 	size_t	right_i;
 	size_t	left_i;
 
-	// printf("before take fork\n");
-	// print_all_fork_status(a);
-	// printf("p_no = %zu\n", p_no);
-	// printf("a->fork_count = %zu\n", a->fork_count);
 	if (philo_i == 0)
 	{
 		right_i = philo_i;
@@ -31,30 +27,42 @@ int	take_fork(t_sim_stat *s, size_t philo_i)
 		right_i = philo_i + 1;
 		left_i = philo_i;
 	}
-	// mutexいれるならここ。
 	if (pthread_mutex_lock(&(s->mutex)) != 0)
 	{
-		printf("dame\n");
+		printf("strerror(errno); : %s\n", strerror(errno));
+		printf("dame lock\n");
 		return (false);
 	}
 	s->is_fork_taken[right_i] = true;
 	s->is_fork_taken[left_i] = true;
-	// printf("after take fork\n");
-	// print_all_fork_status(a);
 	print_act_take_fork(s->p_attr[philo_i].num, gettime());
 	return (true);
 }
 
-int	take_down_fork(t_sim_stat *a, size_t philo_i)
+int	take_down_fork(t_sim_stat *s, size_t philo_i)
 {
-	// mutex解除
-	if (pthread_mutex_unlock(&(a->mutex)) != 0)
+	size_t	right_i;
+	size_t	left_i;
+
+	if (philo_i == 0)
 	{
-		printf("dame\n");
+		right_i = philo_i;
+		left_i = s->fork_count - 1;
+	}
+	else
+	{
+		right_i = philo_i + 1;
+		left_i = philo_i;
+	}
+	s->is_fork_taken[right_i] = false;
+	s->is_fork_taken[left_i] = false;
+	// mutex解除
+	if (pthread_mutex_unlock(&(s->mutex)) != 0)
+	{
+		printf("strerror(errno); : %s\n", strerror(errno));
+		printf("dame unlock\n");
 		return (false);
 	}
-	(void)a;
-	(void)philo_i;
 	return (0);
 }
 

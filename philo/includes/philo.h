@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 16:42:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:51:08 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <stdbool.h>
 # include <string.h>
 # include <sys/time.h>
+// TODO: 後で消すこと
+# include <errno.h>
+
 
 # define NUMBER_OF_PHILOSOPHERS 1
 # define TIME_TO_DIE 2
@@ -36,8 +39,6 @@
 # define JOIN_THREAD_ERROR "join thread error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 # define MUTEX_INIT_ERROR "mutex init error\n"
-
-// TODO: philo用の構造体を作る
 
 typedef struct s_philo_attr
 {
@@ -58,8 +59,6 @@ typedef struct s_sim_stat {
 	size_t			thread_i;
 	pthread_mutex_t	mutex;
 }	t_sim_stat;
-
-
 
 // philo_utils.c
 int			ft_isdigit(int c);
