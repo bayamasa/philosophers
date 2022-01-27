@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 06:38:40 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 06:42:45 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,9 @@ int			take_down_fork(t_sim_stat *a, size_t philo_i);
 void		eating(t_sim_stat *a, size_t philo_i);
 void		sleeping(t_sim_stat *a, size_t philo_i);
 void		thinking(t_sim_stat *a, size_t philo_i);
+
+// monitor.c
+void		*monitor_philo(void *attr);
+
 
 #endif
