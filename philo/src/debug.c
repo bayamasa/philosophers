@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 15:40:27 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	print_all_fork_status(t_philo_attr *a)
+void	print_all_fork_status(t_sim_stat *a)
 {
 	size_t	i;
 

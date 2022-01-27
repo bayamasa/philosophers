@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 10:41:52 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ size_t	validate_eat_limit(const char *str, int *status)
 }
 
 
-int	check_args(int argc, const char *argv[], t_philo_attr *a)
+int	check_args(int argc, const char *argv[], t_sim_stat *a)
 {
 	int	status;
 

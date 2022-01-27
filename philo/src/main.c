@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 10:42:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char const *argv[])
 {
-	t_philo_attr	attr;
+	t_sim_stat	attr;
 
 	if (!check_args(argc, argv, &attr))
 		return (EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:42:14 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 09:49:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	abort_philo_msg(char *msg)
 	return (EXIT_FAILURE);
 }
 
-int	abort_philo_msg_with_free(char *msg, t_philo_attr *a)
+int	abort_philo_msg_with_free(char *msg, t_sim_stat *a)
 {
 	if (a->is_fork_taken != NULL)
 		free(a->is_fork_taken);

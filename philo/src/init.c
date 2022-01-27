@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 11:37:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:54:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	init_all_attr(t_philo_attr *a)
+int	init_all_attr(t_sim_stat *a)
 {
 	// TODO
 	if (pthread_mutex_init(&(a->mutex), NULL) == -1)

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 11:34:20 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:58:45 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 # define MUTEX_INIT_ERROR "mutex init error\n"
 
-typedef struct s_philo_attr {
+// TODO: philo用の構造体を作る
+typedef struct s_sim_stat {
 	size_t			philo_count;
 	size_t			eat_t;
 	size_t			die_t;
@@ -43,7 +44,7 @@ typedef struct s_philo_attr {
 	size_t			start_t;
 	size_t			ate_t;
 	pthread_mutex_t	mutex;
-}	t_philo_attr;
+}	t_sim_stat;
 
 // philo_utils.c
 int			ft_isdigit(int c);
@@ -58,23 +59,23 @@ size_t		gettime(void);
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
-int			abort_philo_msg_with_free(char *msg, t_philo_attr *a);
+int			abort_philo_msg_with_free(char *msg, t_sim_stat *a);
 
 // args_handling.c
-int			check_args(int argc, const char **argv, t_philo_attr *a);
+int			check_args(int argc, const char **argv, t_sim_stat *a);
 size_t		validate_philo_num(const char *str, int *status);
 size_t		validate_time(const char *str, int *status);
 size_t		validate_eat_limit(const char *str, int *status);
 
 // init.c
-int			init_all_attr(t_philo_attr *a);
+int			init_all_attr(t_sim_stat *a);
 
 // debug.c
-void		print_all_fork_status(t_philo_attr *a);
+void		print_all_fork_status(t_sim_stat *a);
 void		debug_thread_start(size_t count);
 
 // simulation.c
-int			start_simulation(t_philo_attr *a);
+int			start_simulation(t_sim_stat *a);
 
 // print_act.c
 void		print_act_take_fork(size_t philo, size_t time);
@@ -84,10 +85,10 @@ void		print_act_thinking(size_t philo, size_t time);
 void		print_act_died(size_t philo, size_t time);
 
 // act.c
-int			take_fork(t_philo_attr *a, size_t p_no);
-int			take_down_fork(t_philo_attr *a, size_t p_no);
-void		eating(t_philo_attr *a, size_t p_no);
-void		sleeping(t_philo_attr *a, size_t p_no);
+int			take_fork(t_sim_stat *a, size_t p_no);
+int			take_down_fork(t_sim_stat *a, size_t p_no);
+void		eating(t_sim_stat *a, size_t p_no);
+void		sleeping(t_sim_stat *a, size_t p_no);
 void		thinking(size_t p_no);
 
 #endif
