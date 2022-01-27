@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 10:04:52 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 10:47:37 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 18:17:48 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	*test_mutex_2(void *status)
 
 int	main(void)
 {
-	pthread_t 	thread;
+	pthread_t	thread;
 	int			status;
 
 	status = 100;
