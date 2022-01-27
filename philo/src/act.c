@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 17:16:31 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:34:58 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	take_fork(t_philo_attr *a, size_t p_no)
 		left_i = p_no - 1;
 	}
 	// mutexいれるならここ。
+	if (pthread_mutex_lock(&(a->mutex)) != 0)
+	{
+		printf("dame\n");
+		return (false);
+	}
 	a->is_fork_taken[right_i] = true;
 	a->is_fork_taken[left_i] = true;
 	// printf("after take fork\n");
@@ -43,6 +48,11 @@ int	take_fork(t_philo_attr *a, size_t p_no)
 int	take_down_fork(t_philo_attr *a, size_t p_no)
 {
 	// mutex解除
+	if (pthread_mutex_unlock(&(a->mutex)) != 0)
+	{
+		printf("dame\n");
+		return (false);
+	}
 	(void)a;
 	(void)p_no;
 	return (0);

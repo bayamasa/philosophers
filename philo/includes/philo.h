@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 17:24:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:34:20 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,20 @@
 # define CREATE_THREAD_ERROR "create thread error\n"
 # define JOIN_THREAD_ERROR "join thread error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
+# define MUTEX_INIT_ERROR "mutex init error\n"
 
 typedef struct s_philo_attr {
-	size_t	philo_count;
-	size_t	eat_t;
-	size_t	die_t;
-	size_t	sleep_t;
-	size_t	meal_limits;
-	size_t	fork_count;
-	int		*is_fork_taken;
-	size_t	philo_num;
-	int		test;
-	size_t	start_t;
-	size_t	ate_t;
+	size_t			philo_count;
+	size_t			eat_t;
+	size_t			die_t;
+	size_t			sleep_t;
+	size_t			meal_limits;
+	size_t			fork_count;
+	int				*is_fork_taken;
+	size_t			philo_num;
+	size_t			start_t;
+	size_t			ate_t;
+	pthread_mutex_t	mutex;
 }	t_philo_attr;
 
 // philo_utils.c

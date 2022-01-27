@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/26 15:18:51 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/27 11:37:43 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	init_all_attr(t_philo_attr *a)
 {
+	// TODO
+	if (pthread_mutex_init(&(a->mutex), NULL) == -1)
+		return (abort_philo_msg(MALLOC_ERROR));	
 	// create_fork
 	a->fork_count = a->philo_count;
 	a->is_fork_taken = (int *)malloc(sizeof(int) * a->fork_count);
