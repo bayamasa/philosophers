@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 07:05:12 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 07:20:22 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	take_fork(t_sim_stat *s, size_t philo_i)
 	}
 	s->is_fork_taken[right_i] = true;
 	s->is_fork_taken[left_i] = true;
-	if (!is_someone_dead(s))
-		print_act_take_fork(s->p_attr[philo_i].num, gettime());
+	if (!print_act_take_fork(s, s->p_attr[philo_i].num, gettime()))
+		return (false);
 	return (true);
 }
 
@@ -61,11 +61,9 @@ int	take_down_fork(t_sim_stat *s, size_t philo_i)
 	if (pthread_mutex_unlock(&(s->mutex)) != 0)
 	{
 		printf("strerror(errno); : %s\n", strerror(errno));
-		printf("dame unlock\n");
 		return (false);
 	}
-	if (!is_someone_dead(s))
-		print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
+		// print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
 	return (0);
 }
 
@@ -73,21 +71,18 @@ void	eating(t_sim_stat *s, size_t philo_i)
 {
 	// updaate ate_time;
 	s->p_attr[philo_i].ate_t = gettime();
-	if (!is_someone_dead(s))
-		print_act_eating(s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
+	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
 	usleep(s->p_attr[philo_i].eat_t);
 	take_down_fork(s, philo_i);
 }
 
 void	sleeping(t_sim_stat *s, size_t philo_i)
 {
-	if (!is_someone_dead(s))
-		print_act_sleeping(s->p_attr[philo_i].num, gettime());
+	print_act_sleeping(s, s->p_attr[philo_i].num, gettime());
 	usleep(s->p_attr[philo_i].sleep_t);
 }
 
 void	thinking(t_sim_stat *s, size_t philo_i)
 {
-	if (!is_someone_dead(s))
-		print_act_thinking(s->p_attr[philo_i].num, gettime());
+	print_act_thinking(s, s->p_attr[philo_i].num, gettime());
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 06:51:37 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 07:22:03 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,18 @@ void	*monitor_philo(void *attr)
 			// 現在時刻 - 最後に食べた時間(開始時間)が死ぬまでの時間を上回ったとき
 			if (is_philo_dead(s, i))
 			{
+				if (pthread_mutex_lock(&(s->mutex)) != 0)
+				{
+					printf("strerror(errno); : %s\n", strerror(errno));
+					return (false);
+				}
 				s->is_someone_dead = true;
-				print_act_died(s->p_attr[i].num, gettime());
+				print_act_died(s, s->p_attr[i].num, gettime());
+				if (pthread_mutex_unlock(&(s->mutex)) != 0)
+				{
+					printf("strerror(errno); : %s\n", strerror(errno));
+					return (false);
+				}
 				return (0);
 			}
 			i++;
