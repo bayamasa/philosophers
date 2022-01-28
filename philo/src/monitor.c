@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:47:16 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*monitor_philo(void *attr)
 					printf("strerror(errno); : %s\n", strerror(errno));
 					return (false);
 				}
-				s->is_someone_dead = true;
+				s->is_anyone_dead = true;
 				print_act_died(s->p_attr[i].num, gettime());
 				if (pthread_mutex_unlock(&(s->mutex)) != 0)
 				{

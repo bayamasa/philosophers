@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 07:13:35 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_sim_stat {
 	t_philo_attr	*p_attr;
 	size_t			thread_i;
 	pthread_mutex_t	mutex;
-	int				is_someone_dead;
+	int				is_anyone_dead;
 }	t_sim_stat;
 
 // philo_utils.c
@@ -91,7 +91,7 @@ void		print_act_takedown_fork(size_t philo, size_t time);
 
 // simulation.c
 int			start_simulation(t_sim_stat *a);
-int			is_someone_dead(t_sim_stat *s);
+int			is_anyone_dead(t_sim_stat *s);
 
 // print_act.c
 int			print_act_take_fork(t_sim_stat *s, size_t philo, size_t time);
