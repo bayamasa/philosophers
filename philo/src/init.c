@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:27:16 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,16 @@ int	init(t_sim_stat *s, const char *argv[])
 	if (!init_philo_attr(s, argv))
 		return (abort_philo_msg(MALLOC_ERROR));
 	s->fork_count = s->philo_count;
+	s->eat_count = 0;
 	if (argv[TIMES_PHILO_MUST_EAT] != NULL)
-		s->meal_limits = ft_atoi_error(argv[TIMES_PHILO_MUST_EAT], &status);
+	{
+		printf("must eat\n");
+		s->eat_limit_flag = true;
+		s->eat_limit = ft_atoi_error(argv[TIMES_PHILO_MUST_EAT], &status);
+		printf("s->eat_limit = %zu\n", s->eat_limit);
+	}
+	else
+		s->eat_limit_flag = false;
 	s->is_fork_taken = (int *)malloc(sizeof(int) * s->fork_count);
 	if (s->is_fork_taken == NULL)
 		return (abort_philo_msg_with_free(MALLOC_ERROR, s));

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:29:45 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:33:28 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,11 @@ void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 	else
 		*l = p_i - 1;
 }
+
+int	is_eat_limit_surpassed(t_sim_stat *s)
+{
+	if (s->eat_count >= s->eat_limit)
+		return (true);
+	return (false);
+}
+

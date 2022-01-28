@@ -9,3 +9,5 @@ mutex.lockの中でmutex.lockをかけるとどうなるのか￥
 sleepの時間変えたらbus errorなおった
 simulation.c L50 usleep 200→20
 simulation.c L23 usleep 50→削除
+
+unlock → robust unlockにしたほうがいいかも

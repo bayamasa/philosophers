@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:30:00 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:15:20 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ typedef struct s_philo_attr
 
 typedef struct s_sim_stat {
 	size_t			philo_count;
-	size_t			meal_limits;
+	size_t			eat_limit;
 	size_t			fork_count;
 	int				*is_fork_taken;
 	t_philo_attr	*p_attr;
 	size_t			thread_i;
 	pthread_mutex_t	mutex;
 	int				is_anyone_dead;
+	size_t			eat_count;
+	int				eat_limit_flag;
 }	t_sim_stat;
 
 // philo_utils.c
@@ -71,7 +73,10 @@ void		ft_putstr_fd(char *s, int fd);
 // philo_utils_2.c
 size_t		ft_strlen(const char *str);
 size_t		gettime(void);
-void		get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l);
+void		get_forks_position(\
+			size_t fork_count, size_t p_i, size_t *r, size_t *l);
+int			is_eat_limit_surpassed(t_sim_stat *s);
+
 
 
 // error_handling.c
@@ -105,9 +110,9 @@ int			print_act_died(size_t philo, size_t time);
 // act.c
 int			take_forks(t_sim_stat *a, size_t philo_i);
 int			take_down_forks(t_sim_stat *a, size_t philo_i);
-void		eating(t_sim_stat *a, size_t philo_i);
-void		sleeping(t_sim_stat *a, size_t philo_i);
-void		thinking(t_sim_stat *a, size_t philo_i);
+int			eating(t_sim_stat *a, size_t philo_i);
+int			sleeping(t_sim_stat *a, size_t philo_i);
+int			thinking(t_sim_stat *a, size_t philo_i);
 
 // monitor.c
 void		*monitor_philo(void *attr);

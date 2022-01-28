@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:30:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:44:16 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,47 @@ void	*monitor_philo(void *attr)
 	size_t		i;
 	t_sim_stat	*s;
 
-	i = 0;
 	s = (t_sim_stat *)attr;
 	while (true)
 	{
+		i = 0;
 		while (i < s->philo_count)
 		{
+			if (pthread_mutex_lock(&(s->mutex)) != 0)
+			{
+				printf("lock error; : %s\n", strerror(errno));
+				return (false);
+			}
 			if (is_philo_dead(s, i))
 			{
-				if (pthread_mutex_lock(&(s->mutex)) != 0)
-				{
-					printf("strerror(errno); : %s\n", strerror(errno));
-					return (false);
-				}
 				s->is_anyone_dead = true;
 				print_act_died(s->p_attr[i].num, gettime());
 				if (pthread_mutex_unlock(&(s->mutex)) != 0)
 				{
-					printf("strerror(errno); : %s\n", strerror(errno));
+					printf("unlock error; : %s\n", strerror(errno));
 					return (false);
 				}
 				return (0);
+			}
+			// アクセスするときにmutexかけなきゃいけないかも
+			if (s->eat_limit_flag)
+			{
+				if (is_eat_limit_surpassed(s))
+				{
+					// TODO: 消す
+					printf("eat_limit_surpass true terminate thread\n");
+					if (pthread_mutex_unlock(&(s->mutex)) != 0)
+					{
+						printf("unlock error; : %s\n", strerror(errno));
+						return (false);
+					}
+					return (0);
+				}
+			}
+			if (pthread_mutex_unlock(&(s->mutex)) != 0)
+			{
+				printf("unlock error; : %s\n", strerror(errno));
+				return (false);
 			}
 			i++;
 		}
