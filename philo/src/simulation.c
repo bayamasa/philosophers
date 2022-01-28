@@ -30,7 +30,7 @@ void	*start_philo_act(void *attr)
 	return (0);
 }
 
-int	is_anyone_dead(t_sim_stat *s)
+bool	is_anyone_dead(t_sim_stat *s)
 {
 	if (s->is_anyone_dead)
 		return (true);

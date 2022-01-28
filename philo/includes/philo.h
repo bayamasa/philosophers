@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 16:11:02 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:49:44 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		debug_all_fork_normal(t_sim_stat *s);
 
 // simulation.c
 int			start_simulation(t_sim_stat *a);
-int			is_anyone_dead(t_sim_stat *s);
+bool		is_anyone_dead(t_sim_stat *s);
 
 // print_act.c
 int			print_act_take_fork(t_sim_stat *s, size_t philo, size_t time);
