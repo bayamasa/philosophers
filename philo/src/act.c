@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 14:45:09 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:02:57 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ int	take_forks(t_sim_stat *s, size_t philo_i)
 	size_t	left_i;
 
 	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
-	if (pthread_mutex_lock(&(s->mutex)) != 0)
-	{
-		printf("lock error; : %s\n", strerror(errno));
+	if (!lock(s->mutex))
 		return (false);
-	}
 	s->is_fork_taken[right_i] = true;
 	s->is_fork_taken[left_i] = true;
 	if (!print_act_take_fork(s, s->p_attr[philo_i].num, gettime()))
@@ -38,11 +35,8 @@ int	eating(t_sim_stat *s, size_t philo_i)
 	take_down_forks(s, philo_i);
 	s->eat_count++;
 	printf("eat_count = %zu\n", s->eat_count);
-	if (pthread_mutex_unlock(&(s->mutex)) != 0)
-	{
-		printf("unlock error; : %s\n", strerror(errno));
+	if (!unlock(s->mutex))
 		return (false);
-	}
 	return (true);
 }
 

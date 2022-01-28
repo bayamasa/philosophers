@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 11:15:20 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:08:14 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void		get_forks_position(\
 			size_t fork_count, size_t p_i, size_t *r, size_t *l);
 int			is_eat_limit_surpassed(t_sim_stat *s);
 
-
+// philo_utils_3.c
+int			lock(pthread_mutex_t mutex);
+int			unlock(pthread_mutex_t mutex);
 
 // error_handling.c
 int			abort_philo_msg(char *msg);

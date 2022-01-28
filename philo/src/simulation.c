@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:29:11 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:03:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	*start_philo_act(void *attr)
 
 int	is_anyone_dead(t_sim_stat *s)
 {
-	
 	if (s->is_anyone_dead)
 		return (true);
 	return (false);

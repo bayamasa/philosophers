@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo_utils_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:09:33 by mhirabay         ###   ########.fr       */
+/*   Created: 2022/01/28 14:48:03 by mhirabay          #+#    #+#             */
+/*   Updated: 2022/01/28 15:07:59 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char const *argv[])
-{
-	t_sim_stat	attr;
 
-	if (!check_args(argc, argv))
-		return (EXIT_FAILURE);
-	if (!init(&attr, argv))
-		return (EXIT_FAILURE);
-	if (!start_simulation(&attr))
-		return (EXIT_FAILURE);
-	return (0);
+int	lock(pthread_mutex_t mutex)
+{
+	if (pthread_mutex_lock(&mutex) != 0)
+	{
+		printf("lock error; : %s\n", strerror(errno));
+		return (false);
+	}
+	return (true);
+}
+
+int unlock(pthread_mutex_t mutex)
+{
+	if (pthread_mutex_unlock(&mutex) != 0)
+	{
+		printf("unlock error; : %s\n", strerror(errno));
+		return (false);
+	}
+	return (true);
 }

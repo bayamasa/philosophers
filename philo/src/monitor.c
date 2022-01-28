@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 14:44:16 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:57:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,14 @@ void	*monitor_philo(void *attr)
 		i = 0;
 		while (i < s->philo_count)
 		{
-			if (pthread_mutex_lock(&(s->mutex)) != 0)
-			{
-				printf("lock error; : %s\n", strerror(errno));
+			if (!lock(s->mutex))
 				return (false);
-			}
 			if (is_philo_dead(s, i))
 			{
 				s->is_anyone_dead = true;
 				print_act_died(s->p_attr[i].num, gettime());
-				if (pthread_mutex_unlock(&(s->mutex)) != 0)
-				{
-					printf("unlock error; : %s\n", strerror(errno));
+				if (!unlock(s->mutex))
 					return (false);
-				}
 				return (0);
 			}
 			// アクセスするときにmutexかけなきゃいけないかも
@@ -54,19 +48,14 @@ void	*monitor_philo(void *attr)
 				{
 					// TODO: 消す
 					printf("eat_limit_surpass true terminate thread\n");
-					if (pthread_mutex_unlock(&(s->mutex)) != 0)
-					{
-						printf("unlock error; : %s\n", strerror(errno));
+					// TODO: 異常終了時と正常終了の区別がつけられない。
+					if (!unlock(s->mutex))
 						return (false);
-					}
 					return (0);
 				}
 			}
-			if (pthread_mutex_unlock(&(s->mutex)) != 0)
-			{
-				printf("unlock error; : %s\n", strerror(errno));
+			if (!unlock(s->mutex))
 				return (false);
-			}
 			i++;
 		}
 	}

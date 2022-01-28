@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:10:18 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:04:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,23 @@ int	print_act_eating(t_sim_stat *s, size_t philo, size_t time)
 
 int	print_act_sleeping(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (pthread_mutex_lock(&(s->mutex)) != 0)
-	{
-		printf("strerror(errno); : %s\n", strerror(errno));
+	if (!lock(s->mutex))
 		return (false);
-	}
 	if (!is_anyone_dead(s))
 		printf("%zu %zu is sleeping\n", time, philo);
-	if (pthread_mutex_unlock(&(s->mutex)) != 0)
-	{
-		printf("strerror(errno); : %s\n", strerror(errno));
+	if (!unlock(s->mutex))
 		return (false);
-	}
 	return (true);
 }
 
 int	print_act_thinking(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (pthread_mutex_lock(&(s->mutex)) != 0)
-	{
-		printf("strerror(errno); : %s\n", strerror(errno));
+	if (!lock(s->mutex))
 		return (false);
-	}
 	if (!is_anyone_dead(s))
 		printf("%zu %zu is thinking\n", time, philo);
-	if (pthread_mutex_unlock(&(s->mutex)) != 0)
-	{
-		printf("strerror(errno); : %s\n", strerror(errno));
+	if (!unlock(s->mutex))
 		return (false);
-	}
 	return (true);
 }
 
