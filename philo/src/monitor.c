@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 14:57:29 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:53:56 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	is_philo_dead(t_sim_stat *s, size_t philo_i)
 		return (true);
 	return (false);
 }
-
 
 void	*monitor_philo(void *attr)
 {
@@ -32,14 +31,14 @@ void	*monitor_philo(void *attr)
 		while (i < s->philo_count)
 		{
 			if (!lock(s->mutex))
-				return (false);
+				return (NULL);
 			if (is_philo_dead(s, i))
 			{
 				s->is_anyone_dead = true;
 				print_act_died(s->p_attr[i].num, gettime());
 				if (!unlock(s->mutex))
-					return (false);
-				return (0);
+					return (NULL);
+				return (NULL);
 			}
 			// アクセスするときにmutexかけなきゃいけないかも
 			if (s->eat_limit_flag)
@@ -50,14 +49,14 @@ void	*monitor_philo(void *attr)
 					printf("eat_limit_surpass true terminate thread\n");
 					// TODO: 異常終了時と正常終了の区別がつけられない。
 					if (!unlock(s->mutex))
-						return (false);
-					return (0);
+						return (NULL);
+					return (NULL);
 				}
 			}
 			if (!unlock(s->mutex))
-				return (false);
+				return (NULL);
 			i++;
 		}
 	}
-	return (0);
+	return (NULL);
 }
