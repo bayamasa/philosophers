@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/28 14:48:24 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/28 15:32:47 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS 	:= $(addprefix $(OBJSDIR), $(SRCNAME:%.c=%.o))
 
 CC		:= gcc 
 CFLAGS	:= -Wall -Werror -Wextra -g -pthread
-DEBUG	:= -g -fsanitize=address
+DEBUG	:= -g -fsanitize=thread
 INC		:= -I ./philo/includes/
 RM		:= rm -rf
 

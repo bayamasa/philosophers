@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:03:21 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:30:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	*start_philo_act(void *attr)
 	// usleep(50);
 	while (true)
 	{
-		take_forks(a, thread_i);
 		eating(a, thread_i);
 		sleeping(a, thread_i);
 		thinking(a, thread_i);

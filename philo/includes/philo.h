@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:08:14 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:11:02 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int			is_eat_limit_surpassed(t_sim_stat *s);
 // philo_utils_3.c
 int			lock(pthread_mutex_t mutex);
 int			unlock(pthread_mutex_t mutex);
+int			is_forks_unused(t_sim_stat *t, size_t r, size_t l);
+
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
@@ -97,6 +99,7 @@ int			init(t_sim_stat *s, const char *argv[]);
 void		print_all_fork_status(t_sim_stat *a);
 void		debug_thread_start(size_t count);
 void		print_act_takedown_fork(size_t philo, size_t time);
+void		debug_all_fork_normal(t_sim_stat *s);
 
 // simulation.c
 int			start_simulation(t_sim_stat *a);
