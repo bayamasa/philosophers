@@ -23,7 +23,7 @@ void	*start_philo_act(void *attr)
 	usleep(50);
 	while (true)
 	{
-		take_fork(a, thread_i);
+		take_forks(a, thread_i);
 		eating(a, thread_i);
 		sleeping(a, thread_i);
 		thinking(a, thread_i);

@@ -101,8 +101,8 @@ int			print_act_thinking(t_sim_stat *s, size_t philo, size_t time);
 int			print_act_died(size_t philo, size_t time);
 
 // act.c
-int			take_fork(t_sim_stat *a, size_t philo_i);
-int			take_down_fork(t_sim_stat *a, size_t philo_i);
+int			take_forks(t_sim_stat *a, size_t philo_i);
+int			take_down_forks(t_sim_stat *a, size_t philo_i);
 void		eating(t_sim_stat *a, size_t philo_i);
 void		sleeping(t_sim_stat *a, size_t philo_i);
 void		thinking(t_sim_stat *a, size_t philo_i);

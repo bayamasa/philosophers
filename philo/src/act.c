@@ -12,7 +12,13 @@
 
 #include "../includes/philo.h"
 
-int	take_fork(t_sim_stat *s, size_t philo_i)
+
+void	get_forks_position(size_t *right_i, size_t *left_i)
+{
+	
+}
+
+int	take_forks(t_sim_stat *s, size_t philo_i)
 {
 	size_t	right_i;
 	size_t	left_i;
@@ -45,10 +51,10 @@ void	eating(t_sim_stat *s, size_t philo_i)
 	s->p_attr[philo_i].ate_t = gettime();
 	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
 	usleep(s->p_attr[philo_i].eat_t);
-	take_down_fork(s, philo_i);
+	take_down_forks(s, philo_i);
 }
 
-int	take_down_fork(t_sim_stat *s, size_t philo_i)
+int	take_down_forks(t_sim_stat *s, size_t philo_i)
 {
 	size_t	right_i;
 	size_t	left_i;
