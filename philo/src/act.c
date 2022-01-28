@@ -6,16 +6,20 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:45:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:22:26 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
 
-void	get_forks_position(size_t *right_i, size_t *left_i)
+void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 {
-	
+	*r = p_i;
+	if (p_i == 0)
+		*l = fork_count - 1;
+	else
+		*l = p_i - 1;
 }
 
 int	take_forks(t_sim_stat *s, size_t philo_i)
@@ -23,20 +27,10 @@ int	take_forks(t_sim_stat *s, size_t philo_i)
 	size_t	right_i;
 	size_t	left_i;
 
-	if (philo_i == 0)
-	{
-		right_i = philo_i;
-		left_i = s->fork_count - 1;
-	}
-	else
-	{
-		right_i = philo_i + 1;
-		left_i = philo_i;
-	}
+	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
 	if (pthread_mutex_lock(&(s->mutex)) != 0)
 	{
 		printf("strerror(errno); : %s\n", strerror(errno));
-		printf("dame lock\n");
 		return (false);
 	}
 	s->is_fork_taken[right_i] = true;
@@ -59,16 +53,7 @@ int	take_down_forks(t_sim_stat *s, size_t philo_i)
 	size_t	right_i;
 	size_t	left_i;
 
-	if (philo_i == 0)
-	{
-		right_i = philo_i;
-		left_i = s->fork_count - 1;
-	}
-	else
-	{
-		right_i = philo_i + 1;
-		left_i = philo_i;
-	}
+	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
 	s->is_fork_taken[right_i] = false;
 	s->is_fork_taken[left_i] = false;
 	// mutex解除
