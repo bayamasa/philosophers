@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 07:20:22 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:45:43 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ int	take_fork(t_sim_stat *s, size_t philo_i)
 	return (true);
 }
 
+void	eating(t_sim_stat *s, size_t philo_i)
+{
+	s->p_attr[philo_i].ate_t = gettime();
+	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
+	usleep(s->p_attr[philo_i].eat_t);
+	take_down_fork(s, philo_i);
+}
+
 int	take_down_fork(t_sim_stat *s, size_t philo_i)
 {
 	size_t	right_i;
@@ -63,17 +71,8 @@ int	take_down_fork(t_sim_stat *s, size_t philo_i)
 		printf("strerror(errno); : %s\n", strerror(errno));
 		return (false);
 	}
-		// print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
+	// print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
 	return (0);
-}
-
-void	eating(t_sim_stat *s, size_t philo_i)
-{
-	// updaate ate_time;
-	s->p_attr[philo_i].ate_t = gettime();
-	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
-	usleep(s->p_attr[philo_i].eat_t);
-	take_down_fork(s, philo_i);
 }
 
 void	sleeping(t_sim_stat *s, size_t philo_i)
