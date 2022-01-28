@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:14:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:25:12 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*start_philo_act(void *attr)
 	a = (t_sim_stat *)attr;
 	// ここが次スレッド作成時に上書きされないようにする。
 	thread_i = a->thread_i;
-	usleep(50);
+	// usleep(50);
 	while (true)
 	{
 		take_forks(a, thread_i);
@@ -48,7 +48,7 @@ int	start_simulation(t_sim_stat *s)
 	i = 0;
 	while (i < s->philo_count)
 	{
-		usleep(200);
+		usleep(20);
 		// こいつが更新される前に、L24に値を代入しないと行けない
 		// ほかの方法あるんか？
 		s->thread_i = i;
