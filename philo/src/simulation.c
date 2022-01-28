@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:25:12 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:29:11 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	start_simulation(t_sim_stat *s)
 	while (i < s->philo_count)
 	{
 		usleep(20);
-		// こいつが更新される前に、L24に値を代入しないと行けない
-		// ほかの方法あるんか？
 		s->thread_i = i;
-		// simulation start timeをate_timeとして扱う。
 		s->p_attr[i].ate_t = gettime();
 		if (pthread_create(&p_thread, NULL, start_philo_act, s) != 0)
 			return (abort_philo_msg_with_free(CREATE_THREAD_ERROR, s));

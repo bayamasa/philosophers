@@ -6,21 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:22:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:29:35 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-
-void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
-{
-	*r = p_i;
-	if (p_i == 0)
-		*l = fork_count - 1;
-	else
-		*l = p_i - 1;
-}
 
 int	take_forks(t_sim_stat *s, size_t philo_i)
 {
@@ -56,13 +46,11 @@ int	take_down_forks(t_sim_stat *s, size_t philo_i)
 	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
 	s->is_fork_taken[right_i] = false;
 	s->is_fork_taken[left_i] = false;
-	// mutex解除
 	if (pthread_mutex_unlock(&(s->mutex)) != 0)
 	{
 		printf("strerror(errno); : %s\n", strerror(errno));
 		return (false);
 	}
-	// print_act_takedown_fork(s->p_attr[philo_i].num, gettime());
 	return (0);
 }
 

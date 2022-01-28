@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:30:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	*monitor_philo(void *attr)
 	{
 		while (i < s->philo_count)
 		{
-			// 現在時刻 - 最後に食べた時間(開始時間)が死ぬまでの時間を上回ったとき
 			if (is_philo_dead(s, i))
 			{
 				if (pthread_mutex_lock(&(s->mutex)) != 0)

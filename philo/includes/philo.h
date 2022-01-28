@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 09:48:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 10:30:00 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void		ft_putstr_fd(char *s, int fd);
 // philo_utils_2.c
 size_t		ft_strlen(const char *str);
 size_t		gettime(void);
+void		get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l);
+
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
