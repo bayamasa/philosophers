@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:09:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:04:20 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	main(int argc, char const *argv[])
 {
-	t_sim_stat	attr;
+	t_sim_stat	stat;
 
 	if (!check_args(argc, argv))
 		return (EXIT_FAILURE);
-	if (!init(&attr, argv))
+	if (!init(&stat, argv))
 		return (EXIT_FAILURE);
-	if (!start_simulation(&attr))
+	if (!start_simulation(&stat))
 		return (EXIT_FAILURE);
-	return (0);
+	free_all(&stat);
+	return (EXIT_SUCCESS);
 }

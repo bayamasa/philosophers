@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:30:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:09:39 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ void	*start_philo_act(void *attr)
 	size_t		thread_i;
 
 	a = (t_sim_stat *)attr;
-	// ここが次スレッド作成時に上書きされないようにする。
 	thread_i = a->thread_i;
-	// usleep(50);
 	while (true)
 	{
-		eating(a, thread_i);
-		sleeping(a, thread_i);
-		thinking(a, thread_i);
+		if (!eating(a, thread_i))
+			break ;
+		if (sleeping(a, thread_i))
+			break ;
+		if (thinking(a, thread_i))
+			break ;
 	}
 	return (0);
 }
@@ -56,6 +57,13 @@ int	start_simulation(t_sim_stat *s)
 	if (pthread_create(&m_thread, NULL, monitor_philo, s) != 0)
 		return (abort_philo_msg_with_free(CREATE_THREAD_ERROR, s));
 	if (pthread_join(m_thread, NULL) != 0)
+		return (abort_philo_msg_with_free(JOIN_THREAD_ERROR, s));
+	if (pthread_detach(p_thread) != 0)
+	{
+		printf("detach error; : %s\n", strerror(errno));
+		return (abort_philo_msg_with_free(DETACH_THREAD_ERROR, s));
+	}
+	if (pthread_mutex_destroy(&(s->mutex)) != 0)
 		return (abort_philo_msg_with_free(JOIN_THREAD_ERROR, s));
 	return (true);
 }

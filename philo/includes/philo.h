@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 16:49:44 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:06:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define MALLOC_ERROR "malloc error\n"
 # define CREATE_THREAD_ERROR "create thread error\n"
 # define JOIN_THREAD_ERROR "join thread error\n"
+# define DETACH_THREAD_ERROR "detach thread error\n"
+# define MUTEX_DESTROY_ERROR "mutex destroy error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 # define MUTEX_INIT_ERROR "mutex init error\n"
 
@@ -86,6 +88,7 @@ int			is_forks_unused(t_sim_stat *t, size_t r, size_t l);
 // error_handling.c
 int			abort_philo_msg(char *msg);
 int			abort_philo_msg_with_free(char *msg, t_sim_stat *a);
+void		free_all(t_sim_stat *s);
 
 // args_handling.c
 int			check_args(int argc, const char **argv);
