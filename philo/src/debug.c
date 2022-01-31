@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:37:49 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:50:41 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ void	debug_all_fork_normal(t_sim_stat *s)
 		i++;
 	}
 }
-

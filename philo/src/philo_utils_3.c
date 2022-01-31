@@ -6,12 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:48:03 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:16:14 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:50:31 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
 
 int	lock(pthread_mutex_t mutex)
 {

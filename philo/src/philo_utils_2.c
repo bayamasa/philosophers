@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 15:40:06 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:51:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ int	is_eat_limit_surpassed(t_sim_stat *s)
 		return (true);
 	return (false);
 }
-

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:38:27 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:50:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	init(t_sim_stat *s, const char *argv[])
 	}
 	else
 		s->eat_limit_flag = false;
-
 	s->is_fork_taken = (int *)malloc(sizeof(int) * s->fork_count);
 	if (s->is_fork_taken == NULL)
 		return (abort_philo_msg_with_free(MALLOC_ERROR, s));

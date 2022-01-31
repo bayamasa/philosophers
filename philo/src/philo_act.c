@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:45:44 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:51:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ int	take_down_forks(t_sim_stat *s, size_t philo_i)
 	print_act_takedown_fork(philo_i, gettime());
 	return (0);
 }
-
-
 
 int	sleeping(t_sim_stat *s, size_t philo_i)
 {

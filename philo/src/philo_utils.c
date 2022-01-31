@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:06:06 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/27 16:39:46 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:51:24 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_isdigit(int c)
 		return (c);
 	return (0);
 }
-
 
 size_t	ft_atoi_error(const char *str, int *status)
 {
