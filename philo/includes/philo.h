@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 22:40:21 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:53:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void		print_all_fork_status(t_sim_stat *a);
 void		debug_thread_start(size_t count);
 void		print_act_takedown_fork(size_t philo, size_t time);
 void		debug_all_fork_normal(t_sim_stat *s);
+void		print_args(t_sim_stat *s);
 
 // simulation.c
 bool		start_simulation(t_sim_stat *a);
@@ -117,7 +118,8 @@ bool		is_anyone_dead(t_sim_stat *s);
 
 // print_act.c
 bool		print_act_take_fork(t_sim_stat *s, size_t philo, size_t time);
-bool		print_act_eating(t_sim_stat *s, size_t philo, size_t time);
+bool		print_act_eating(\
+			t_sim_stat *s, size_t philo, size_t time, size_t philo_i);
 bool		print_act_sleeping(t_sim_stat *s, size_t philo, size_t time);
 bool		print_act_thinking(t_sim_stat *s, size_t philo, size_t time);
 bool		print_act_died(size_t philo, size_t time);

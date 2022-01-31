@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:08:41 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:26:42 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	start_simulation(t_sim_stat *s)
 	i = 0;
 	while (i < s->philo_count)
 	{
-		usleep(20);
+		usleep(70);
 		s->thread_i = i;
 		s->p_attr[i].ate_t = gettime();
 		if (pthread_create(&(s->p_attr[i].thread), \

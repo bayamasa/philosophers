@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:18:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:54:33 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 			break ;
 		}
 	}
-	if (!unlock(s->fork_mutex[right_i]))
-		return (false);
 	if (!lock(s->fork_mutex[left_i]))
 		return (false);
 	while (true)
@@ -40,19 +38,17 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 			break ;
 		}
 	}
-	if (!unlock(s->fork_mutex[left_i]))
-		return (false);
 	print_act_take_fork(s, s->p_attr[philo_i].num, gettime());
 	return (true);
 }
 
 bool	eating(t_sim_stat *s, size_t philo_i)
 {
-	s->p_attr[philo_i].ate_t = gettime();
-	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
-	usleep(s->p_attr[philo_i].eat_t);
 	if (!lock(s->m_attr.mutex))
 		return (false);
+	print_act_eating(\
+		s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t, philo_i);
+	usleep(s->p_attr[philo_i].eat_t);
 	s->eat_count++;
 	if (is_eat_limit_surpassed(s))
 		return (false);
@@ -69,8 +65,6 @@ bool	take_down_forks(t_sim_stat *s, size_t philo_i)
 	size_t	left_i;
 
 	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
-	if (!lock(s->fork_mutex[right_i]))
-		return (false);
 	while (true)
 	{
 		if (s->is_fork_taken[right_i] == true)
@@ -80,8 +74,6 @@ bool	take_down_forks(t_sim_stat *s, size_t philo_i)
 		}
 	}
 	if (!unlock(s->fork_mutex[right_i]))
-		return (false);
-	if (!lock(s->fork_mutex[left_i]))
 		return (false);
 	while (true)
 	{	

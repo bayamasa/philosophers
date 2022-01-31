@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:18:12 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:24:04 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ bool	init(t_sim_stat *s, const char *argv[])
 	// TODO: overflow考慮する。
 	ft_memset(s->is_fork_taken, false, sizeof(int) * s->fork_count);
 	s->is_anyone_dead = false;
+	print_args(s);
 	return (true);
 }

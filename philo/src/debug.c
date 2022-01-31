@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 19:50:41 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:25:46 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ void	debug_all_fork_normal(t_sim_stat *s)
 		}
 		i++;
 	}
+}
+
+void	print_args(t_sim_stat *s)
+{
+	printf("time to death : %zu\n", s->p_attr->die_t);
+	printf("time to sleep : %zu\n", s->p_attr->sleep_t);
+	printf("time to eat : %zu\n", s->p_attr->eat_t);
 }
