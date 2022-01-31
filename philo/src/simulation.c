@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 14:15:37 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:51:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*start_philo_act(void *attr)
 	{
 		if (!eating(a, thread_i))
 			break ;
-		if (sleeping(a, thread_i))
+		if (!sleeping(a, thread_i))
 			break ;
-		if (thinking(a, thread_i))
+		if (!thinking(a, thread_i))
 			break ;
 	}
 	return (0);
