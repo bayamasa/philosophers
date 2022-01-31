@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 14:00:30 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:05:50 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ typedef struct s_philo_attr
 	pthread_t		thread;
 }	t_philo_attr;
 
+typedef struct s_monitor_attr
+{
+	pthread_mutex_t	monitor_mutex;
+}	t_monitor_attr;
+
 typedef struct s_sim_stat {
 	size_t			philo_count;
 	size_t			eat_limit;
@@ -61,6 +66,7 @@ typedef struct s_sim_stat {
 	t_philo_attr	*p_attr;
 	size_t			thread_i;
 	pthread_mutex_t	mutex;
+	t_monitor_attr	m_attr;
 	int				is_anyone_dead;
 	size_t			eat_count;
 	int				eat_limit_flag;
