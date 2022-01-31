@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:25:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 22:40:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_sim_stat {
 	int				*is_fork_taken;
 	t_philo_attr	*p_attr;
 	size_t			thread_i;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	*fork_mutex;
 	t_monitor_attr	m_attr;
 	int				is_anyone_dead;
 	size_t			eat_count;

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:12:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:18:12 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,44 @@ bool	init_philo_attr(t_sim_stat *s, const char *argv[])
 	return (true);
 }
 
+bool	init_thread(t_sim_stat *s)
+{
+	size_t	i;
+
+	if (pthread_mutex_init(&(s->m_attr.mutex), NULL) == -1)
+		return (abort_philo_msg(MUTEX_INIT_ERROR));
+	s->fork_mutex = (pthread_mutex_t *) \
+		malloc(sizeof(pthread_mutex_t) * s->fork_count);
+	if (s->fork_mutex == NULL)
+		return (abort_philo_msg(MALLOC_ERROR));
+	i = 0;
+	while (i < s->fork_count)
+	{
+		if (pthread_mutex_init(&(s->fork_mutex[i]), NULL) == -1)
+			return (abort_philo_msg_with_free(MUTEX_INIT_ERROR, s));
+		i++;
+	}
+	return (true);
+}
+
+
 bool	init(t_sim_stat *s, const char *argv[])
 {
 	int		status;
 
-	if (pthread_mutex_init(&(s->m_attr.mutex), NULL) == -1)
-		return (abort_philo_msg(MUTEX_INIT_ERROR));
-	if (pthread_mutex_init(&(s->mutex), NULL) == -1)
-		return (abort_philo_msg(MUTEX_INIT_ERROR));
+	s->philo_count = ft_atoi_error(argv[NUMBER_OF_PHILOSOPHERS], &status);
+	s->fork_count = s->philo_count;
+	if (!init_thread(s))
+		return (false);
 	//TODO: statusが必要ないatoi or strtollを作る
 	status = true;
-	s->philo_count = ft_atoi_error(argv[NUMBER_OF_PHILOSOPHERS], &status);
 	if (!init_philo_attr(s, argv))
 		return (abort_philo_msg(MALLOC_ERROR));
-	s->fork_count = s->philo_count;
 	s->eat_count = 0;
 	if (argv[TIMES_PHILO_MUST_EAT] != NULL)
 	{
-		printf("must eat\n");
 		s->eat_limit_flag = true;
 		s->eat_limit = ft_atoi_error(argv[TIMES_PHILO_MUST_EAT], &status);
-		printf("s->eat_limit = %zu\n", s->eat_limit);
 	}
 	else
 		s->eat_limit_flag = false;
@@ -66,7 +83,6 @@ bool	init(t_sim_stat *s, const char *argv[])
 	// 最初に全部0埋め
 	// TODO: overflow考慮する。
 	ft_memset(s->is_fork_taken, false, sizeof(int) * s->fork_count);
-	debug_all_fork_normal(s);
 	s->is_anyone_dead = false;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:13:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 22:01:01 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	*monitor_philo(void *attr)
 		i = 0;
 		while (i < s->philo_count)
 		{
-			if (!lock(s->m_attr.mutex))
-				return (NULL);
+
 			if (is_philo_dead(s, i))
 			{
 				s->is_anyone_dead = true;
@@ -40,21 +39,22 @@ void	*monitor_philo(void *attr)
 					return (NULL);
 				return (NULL);
 			}
+			if (!unlock(s->m_attr.mutex))
+				return (NULL);
 			// アクセスするときにmutexかけなきゃいけないかも
 			if (s->eat_limit_flag)
 			{
+				if (!lock(s->m_attr.mutex))
+					return (NULL);
 				if (is_eat_limit_surpassed(s))
 				{
-					// TODO: 消す
-					printf("eat_limit_surpass true terminate thread\n");
-					// TODO: 異常終了時と正常終了の区別がつけられない。
 					if (!unlock(s->m_attr.mutex))
 						return (NULL);
 					return (NULL);
 				}
+				if (!unlock(s->m_attr.mutex))
+					return (NULL);
 			}
-			if (!unlock(s->m_attr.mutex))
-				return (NULL);
 			i++;
 		}
 	}

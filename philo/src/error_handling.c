@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:42:14 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:12:42 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 22:44:48 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ void	free_all(t_sim_stat *s)
 		free(s->p_attr);
 	if (s->is_fork_taken != NULL)
 		free(s->is_fork_taken);
+	if (s->fork_mutex != NULL)
+		free(s->fork_mutex);
 }
