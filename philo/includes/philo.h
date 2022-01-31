@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 17:06:25 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:00:30 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_philo_attr
 	size_t			sleep_t;
 	size_t			start_t;
 	size_t			ate_t;
+	pthread_t		thread;
 }	t_philo_attr;
 
 typedef struct s_sim_stat {
