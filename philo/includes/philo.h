@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:05:50 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:16:50 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int			is_eat_limit_surpassed(t_sim_stat *s);
 int			lock(pthread_mutex_t mutex);
 int			unlock(pthread_mutex_t mutex);
 int			is_forks_unused(t_sim_stat *t, size_t r, size_t l);
+void		*ft_memset(void *buf, int ch, size_t n);
 
 
 // error_handling.c
