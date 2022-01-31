@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:54:33 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/02/01 07:26:30 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ bool	eating(t_sim_stat *s, size_t philo_i)
 {
 	if (!lock(s->m_attr.mutex))
 		return (false);
-	print_act_eating(\
-		s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t, philo_i);
+	print_act_eating(s, s->p_attr[philo_i].num, gettime(), philo_i);
 	usleep(s->p_attr[philo_i].eat_t);
 	s->eat_count++;
 	if (is_eat_limit_surpassed(s))
