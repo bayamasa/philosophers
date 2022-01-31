@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   act.c                                              :+:      :+:    :+:   */
+/*   philo_act.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 16:10:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:49:38 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int	eating(t_sim_stat *s, size_t philo_i)
 	s->p_attr[philo_i].ate_t = gettime();
 	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
 	usleep(s->p_attr[philo_i].eat_t);
+	if (!lock(s->mutex))
+		return (false);
 	s->eat_count++;
+	if (!unlock(s->mutex))
+		return (false);
 	printf("eat_count = %zu\n", s->eat_count);
 	return (true);
 }
