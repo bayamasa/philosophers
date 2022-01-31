@@ -87,7 +87,7 @@ int			is_forks_unused(t_sim_stat *t, size_t r, size_t l);
 
 // error_handling.c
 int			abort_philo_msg(char *msg);
-int			abort_philo_msg_with_free(char *msg, t_sim_stat *a);
+int			abort_philo_msg_with_free(char *msg, t_sim_stat *s);
 void		free_all(t_sim_stat *s);
 
 // args_handling.c
