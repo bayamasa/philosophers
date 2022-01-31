@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:14:36 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:19:12 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,17 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 
 bool	eating(t_sim_stat *s, size_t philo_i)
 {
-
-	if (!print_act_take_fork(s, s->p_attr[philo_i].num, gettime()))
-		return (false);
 	s->p_attr[philo_i].ate_t = gettime();
 	print_act_eating(s, s->p_attr[philo_i].num, s->p_attr[philo_i].ate_t);
 	usleep(s->p_attr[philo_i].eat_t);
 	if (!lock(s->m_attr.mutex))
 		return (false);
 	s->eat_count++;
+	printf("eat_count = %zu\n", s->eat_count);
 	if (!unlock(s->m_attr.mutex))
 		return (false);
-	printf("eat_count = %zu\n", s->eat_count);
+	if (!take_down_forks(s, philo_i))
+		return (false);
 	return (true);
 }
 
