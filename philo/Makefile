@@ -6,13 +6,13 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/28 15:32:47 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/31 13:38:48 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= philo
 SRCDIR 	:= ./src/
-SRCNAME	:=	act.c \
+SRCNAME	:=	philo_act.c \
 			args_handling.c \
 			debug.c \
 			error_handling.c \
@@ -21,7 +21,7 @@ SRCNAME	:=	act.c \
 			philo_utils.c \
 			philo_utils_2.c \
 			philo_utils_3.c \
-			print_act.c \
+			print_philo_act.c \
 			simulation.c \
 			monitor.c \
 
