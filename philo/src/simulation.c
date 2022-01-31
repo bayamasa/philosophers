@@ -6,26 +6,28 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:15:32 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:22:07 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*start_philo_act(void *attr)
+void	*start_philo_act(void *stat)
 {
-	t_sim_stat	*a;
+	t_sim_stat	*s;
 	size_t		thread_i;
 
-	a = (t_sim_stat *)attr;
-	thread_i = a->thread_i;
+	s = (t_sim_stat *)stat;
+	thread_i = s->thread_i;
 	while (true)
 	{
-		if (!eating(a, thread_i))
+		if (!take_forks(s, thread_i))
 			break ;
-		if (!sleeping(a, thread_i))
+		if (!eating(s, thread_i))
 			break ;
-		if (!thinking(a, thread_i))
+		if (!sleeping(s, thread_i))
+			break ;
+		if (!thinking(s, thread_i))
 			break ;
 	}
 	return (0);
