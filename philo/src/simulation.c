@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:51:25 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 20:15:32 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	is_anyone_dead(t_sim_stat *s)
 	return (false);
 }
 
-int	start_simulation(t_sim_stat *s)
+bool	start_simulation(t_sim_stat *s)
 {
 	size_t			i;
 	pthread_t		m_thread;

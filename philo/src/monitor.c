@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:40:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 20:13:04 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	is_philo_dead(t_sim_stat *s, size_t philo_i)
+bool	is_philo_dead(t_sim_stat *s, size_t philo_i)
 {
 	if (gettime() - s->p_attr[philo_i].ate_t > s->p_attr[philo_i].die_t)
 		return (true);

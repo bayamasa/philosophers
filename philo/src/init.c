@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 19:50:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 20:12:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	init_philo_attr(t_sim_stat *s, const char *argv[])
+bool	init_philo_attr(t_sim_stat *s, const char *argv[])
 {
 	size_t	i;
 	int		status;
@@ -36,7 +36,7 @@ int	init_philo_attr(t_sim_stat *s, const char *argv[])
 	return (true);
 }
 
-int	init(t_sim_stat *s, const char *argv[])
+bool	init(t_sim_stat *s, const char *argv[])
 {
 	int		status;
 

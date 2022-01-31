@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 10:30:37 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:53:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	validate_eat_limit(const char *str, int *status)
 		*status = false;
 }
 
-int	check_args(int argc, const char *argv[])
+bool	check_args(int argc, const char *argv[])
 {
 	int	status;
 
