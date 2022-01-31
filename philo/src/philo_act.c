@@ -20,12 +20,14 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 	get_forks_position(s->fork_count, philo_i, &right_i, &left_i);
 	while (true)
 	{
+		if (!lock(s->mutex))
+			return (false);
 		if (is_forks_unused(s, right_i, left_i))
 		{
-			if (!lock(s->mutex))
-				return (false);
 			s->is_fork_taken[right_i] = true;
 			s->is_fork_taken[left_i] = true;
+			break ;
+		}
 			if (!unlock(s->mutex))
 				return (false);
 			break ;
@@ -64,8 +66,7 @@ bool	take_down_forks(t_sim_stat *s, size_t philo_i)
 	s->is_fork_taken[left_i] = false;
 	if (!unlock(s->mutex))
 		return (false);
-	print_act_takedown_fork(philo_i, gettime());
-	return (0);
+	return (true);
 }
 
 bool	sleeping(t_sim_stat *s, size_t philo_i)
