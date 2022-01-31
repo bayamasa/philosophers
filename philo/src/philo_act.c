@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:40:51 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:45:44 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	take_down_forks(t_sim_stat *s, size_t philo_i)
 	s->is_fork_taken[left_i] = false;
 	if (!unlock(s->mutex))
 		return (false);
+	print_act_takedown_fork(philo_i, gettime());
 	return (0);
 }
 
