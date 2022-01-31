@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 21:19:12 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:36:40 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 			s->is_fork_taken[left_i] = true;
 			break ;
 		}
-			if (!unlock(s->mutex))
-				return (false);
-			break ;
-		}
+		if (!unlock(s->mutex))
+			return (false);
 	}
-	if (!print_act_take_fork(s, s->p_attr[philo_i].num, gettime()))
-		return (false);
+	print_act_take_fork(s, s->p_attr[philo_i].num, gettime());
 	return (true);
 }
 
