@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_act.c                                        :+:      :+:    :+:   */
+/*   print_philo_act.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:10:18 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/28 16:10:41 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:39:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,44 @@
 
 int	print_act_take_fork(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (!lock(s->mutex))
+	if (!lock(s->m_attr.mutex))
 		return (false);
 	if (!is_anyone_dead(s))
 		printf("%zu %zu has taken a fork\n", time, philo);
-	if (!unlock(s->mutex))
+	if (!unlock(s->m_attr.mutex))
 		return (false);
 	return (true);
 }
 
 int	print_act_eating(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (!lock(s->mutex))
+	if (!lock(s->m_attr.mutex))
 		return (false);
 	if (!is_anyone_dead(s))
 		printf("%zu %zu is eating\n", time, philo);
-	if (!unlock(s->mutex))
+	if (!unlock(s->m_attr.mutex))
 		return (false);
 	return (true);
 }
 
 int	print_act_sleeping(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (!lock(s->mutex))
+	if (!lock(s->m_attr.mutex))
 		return (false);
 	if (!is_anyone_dead(s))
 		printf("%zu %zu is sleeping\n", time, philo);
-	if (!unlock(s->mutex))
+	if (!unlock(s->m_attr.mutex))
 		return (false);
 	return (true);
 }
 
 int	print_act_thinking(t_sim_stat *s, size_t philo, size_t time)
 {
-	if (!lock(s->mutex))
+	if (!lock(s->m_attr.mutex))
 		return (false);
 	if (!is_anyone_dead(s))
 		printf("%zu %zu is thinking\n", time, philo);
-	if (!unlock(s->mutex))
+	if (!unlock(s->m_attr.mutex))
 		return (false);
 	return (true);
 }

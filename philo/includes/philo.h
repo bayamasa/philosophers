@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:16:50 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:38:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_philo_attr
 
 typedef struct s_monitor_attr
 {
-	pthread_mutex_t	monitor_mutex;
+	pthread_mutex_t	mutex;
 }	t_monitor_attr;
 
 typedef struct s_sim_stat {

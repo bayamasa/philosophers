@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 15:21:19 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:38:27 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	init(t_sim_stat *s, const char *argv[])
 {
 	int		status;
 
-	if (pthread_mutex_init(&(s->m_attr.monitor_mutex), NULL) == -1)
+	if (pthread_mutex_init(&(s->m_attr.mutex), NULL) == -1)
 		return (abort_philo_msg(MUTEX_INIT_ERROR));
 	if (pthread_mutex_init(&(s->mutex), NULL) == -1)
 		return (abort_philo_msg(MUTEX_INIT_ERROR));
