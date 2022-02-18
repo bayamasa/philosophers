@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:26:42 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/02/18 22:43:26 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	*start_philo_act(void *stat)
 	size_t		thread_i;
 
 	s = (t_sim_stat *)stat;
+	if (!lock(s->init_mutex))
+		return (false);
 	thread_i = s->thread_i;
+	if (!unlock(s->init_mutex))
+		return (false);
 	while (true)
 	{
 		if (!take_forks(s, thread_i))
@@ -49,7 +53,11 @@ bool	start_simulation(t_sim_stat *s)
 	while (i < s->philo_count)
 	{
 		usleep(70);
+		if (!lock(s->init_mutex))
+			return (false);
 		s->thread_i = i;
+		if (!unlock(s->init_mutex))
+			return (false);
 		s->p_attr[i].ate_t = gettime();
 		if (pthread_create(&(s->p_attr[i].thread), \
 			NULL, start_philo_act, s) != 0)

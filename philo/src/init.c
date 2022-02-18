@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/02/01 07:16:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:01:10 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ bool	init_thread(t_sim_stat *s)
 {
 	size_t	i;
 
-	if (pthread_mutex_init(&(s->m_attr.mutex), NULL) == -1)
+	if (pthread_mutex_init(&(s->init_mutex), NULL) == -1)
+		return (abort_philo_msg(MUTEX_INIT_ERROR));
+	if (pthread_mutex_init(&(s->m_mutex), NULL) == -1)
 		return (abort_philo_msg(MUTEX_INIT_ERROR));
 	s->fork_mutex = (pthread_mutex_t *) \
 		malloc(sizeof(pthread_mutex_t) * s->fork_count);
@@ -77,12 +79,18 @@ bool	init(t_sim_stat *s, const char *argv[])
 	}
 	else
 		s->eat_limit_flag = false;
-	s->is_fork_taken = (int *)malloc(sizeof(int) * s->fork_count);
+	s->is_fork_taken = (bool *)malloc(sizeof(bool) * s->fork_count);
 	if (s->is_fork_taken == NULL)
 		return (abort_philo_msg_with_free(MALLOC_ERROR, s));
 	// 最初に全部0埋め
 	// TODO: overflow考慮する。
-	ft_memset(s->is_fork_taken, false, sizeof(int) * s->fork_count);
+	size_t i = 0;
+	while (i < s->fork_count)
+	{
+		s->is_fork_taken[i] = false;
+		i++;
+	}
+	// ft_memset(s->is_fork_taken, false, sizeof(int) * s->fork_count);
 	s->is_anyone_dead = false;
 	// print_args(s);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/02/01 07:26:30 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:01:10 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ bool	take_forks(t_sim_stat *s, size_t philo_i)
 
 bool	eating(t_sim_stat *s, size_t philo_i)
 {
-	if (!lock(s->m_attr.mutex))
-		return (false);
 	print_act_eating(s, s->p_attr[philo_i].num, gettime(), philo_i);
 	usleep(s->p_attr[philo_i].eat_t);
+	if (!lock(s->m_mutex))
+		return (false);
 	s->eat_count++;
 	if (is_eat_limit_surpassed(s))
 		return (false);
-	if (!unlock(s->m_attr.mutex))
+	if (!unlock(s->m_mutex))
 		return (false);
 	if (!take_down_forks(s, philo_i))
 		return (false);
