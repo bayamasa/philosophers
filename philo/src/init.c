@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:09:23 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/02/18 23:01:10 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/17 08:55:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ bool	init_philo_attr(t_sim_stat *s, const char *argv[])
 	while (i < s->philo_count)
 	{
 		s->p_attr[i].num = i + 1;
-		s->p_attr[i].die_t = ft_atoi_error(argv[TIME_TO_DIE], &status);
-		s->p_attr[i].eat_t = ft_atoi_error(argv[TIME_TO_EAT], &status);
-		s->p_attr[i].sleep_t = ft_atoi_error(argv[TIME_TO_SLEEP], &status);
+		s->p_attr[i].die_t = ft_atoi_error(argv[TIME_TO_DIE], &status) * 1000LL;
+		s->p_attr[i].eat_t = ft_atoi_error(argv[TIME_TO_EAT], &status) * 1000LL;
+		s->p_attr[i].sleep_t = ft_atoi_error(argv[TIME_TO_SLEEP], &status) * 1000LL;
 		// TODO: 下2つは必要かどうかわからんけど一応
 		s->p_attr[i].start_t = 0;
 		s->p_attr[i].ate_t = 0;
@@ -57,7 +57,6 @@ bool	init_thread(t_sim_stat *s)
 	}
 	return (true);
 }
-
 
 bool	init(t_sim_stat *s, const char *argv[])
 {
