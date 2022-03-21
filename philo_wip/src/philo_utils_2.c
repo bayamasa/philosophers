@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 21:35:24 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:17:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,22 @@ void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 		*l = p_i - 1;
 }
 
-bool	is_eat_limit_surpassed(t_sim_stat *s)
+bool	is_eat_limit_surpassed(t_public_config *pc)
 {
-	if (s->eat_count >= s->eat_limit)
+	if (pc->eat_limit_exist == false)
+		return (false);
+	if (pc->eat_count >= pc->eat_limit)
+	{
+		pc->eat_limit_surpassed = true;
 		return (true);
+	}
 	return (false);
+}
+
+int	ft_isspace(char a)
+{
+	if (a == '\t' || a == '\n' || a == '\v'
+		|| a == ' ' || a == '\r' || a == '\f' )
+		return (1);
+	return (0);
 }
