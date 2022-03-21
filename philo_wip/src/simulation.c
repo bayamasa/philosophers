@@ -17,6 +17,8 @@ void	*start_philo_act(void *ph_attr)
 	t_philo_attr	*ph;
 
 	ph = (t_philo_attr *)ph_attr;
+	if (ph->num % 2 == 0)
+		usleep(500);
 	while (true)
 	{
 		if (!take_forks(ph))
