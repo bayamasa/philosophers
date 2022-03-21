@@ -55,7 +55,7 @@ bool	start_simulation(t_sim_stat *s)
 			return (abort_philo_msg_with_free(CREATE_THREAD_ERROR, s));
 		i++;
 	}
-	if (pthread_create(&m_thread, NULL, monitor_philo, s) != 0)
+	if (pthread_create(&m_thread, NULL, monitor_philo, s->m_attr) != 0)
 		return (abort_philo_msg_with_free(CREATE_THREAD_ERROR, s));
 	if (pthread_join(m_thread, NULL) != 0)
 		return (abort_philo_msg_with_free(JOIN_THREAD_ERROR, s));
