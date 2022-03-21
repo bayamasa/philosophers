@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:17:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:18:06 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 
 bool	is_eat_limit_surpassed(t_public_config *pc)
 {
+	if (!lock(pc->m_mutex))
+		return (false);
+	pc->eat_count++;
 	if (pc->eat_limit_exist == false)
 		return (false);
 	if (pc->eat_count >= pc->eat_limit)
