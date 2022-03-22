@@ -6,11 +6,25 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 15:17:40 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:14:59 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	xusleep(size_t eat_t)
+{
+	size_t	i;
+	size_t	cycle_time;
+
+	i = 0;
+	cycle_time = eat_t / 200;
+	while (i < cycle_time)
+	{
+		usleep(200);
+		i++;
+	}
+}
 
 void	*start_philo_act(void *ph_attr)
 {
@@ -18,7 +32,7 @@ void	*start_philo_act(void *ph_attr)
 
 	ph = (t_philo_attr *)ph_attr;
 	if (ph->num % 2 == 0)
-		usleep(500);
+		xusleep(ph->phc->eat_t);
 	while (true)
 	{
 		if (!take_forks(ph))

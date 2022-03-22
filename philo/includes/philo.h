@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 15:55:12 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:35:07 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,7 @@ bool		thinking(t_philo_attr *ph);
 // monitor.c
 void		*monitor_philo(void *attr);
 bool		is_philo_dead(t_monitor_attr *s, size_t philo_i);
+
+void		xusleep(size_t eat_t);
 
 #endif
