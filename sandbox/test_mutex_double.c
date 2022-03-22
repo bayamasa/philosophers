@@ -34,10 +34,11 @@ void *test_2(void *params)
 	p = (m *)params;
 	pthread_mutex_lock(&(p->test_2));
 	printf("test_2 kita\n");
-	sleep(1);
+	usleep(10);
 	p->status = 111;
 	printf("p->status test_2 = %d\n", p->status);
-	pthread_mutex_unlock(&(p->test_2));
+	printf("status = %d\n", pthread_mutex_unlock(&(p->test_2)));
+	perror("");
 	return (NULL);
 }
 
