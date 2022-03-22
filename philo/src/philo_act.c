@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:24:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:54:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ bool	take_forks(t_philo_attr *ph)
 	if (ph->phc->is_fork_taken[right_i] == false)
 	{
 		ph->phc->is_fork_taken[right_i] = true;
-		print_act_take_fork(ph, gettime());
+		print_act_take_fork(ph);
 	}
 	if (!lock(&(ph->phc->fork_mutex[left_i])))
 		return (false);
 	if (ph->phc->is_fork_taken[left_i] == false)
 	{
 		ph->phc->is_fork_taken[left_i] = true;
-		print_act_take_fork(ph, gettime());
+		print_act_take_fork(ph);
 	}
 	return (true);
 }
 
 bool	eating(t_philo_attr *ph)
 {
-	print_act_eating(ph, gettime());
+	print_act_eating(ph);
 	usleep(ph->phc->eat_t);
 	if (!take_down_forks(ph))
 		return (false);
@@ -71,13 +71,13 @@ bool	take_down_forks(t_philo_attr *ph)
 
 bool	sleeping(t_philo_attr *ph)
 {
-	print_act_sleeping(ph, gettime());
+	print_act_sleeping(ph);
 	usleep(ph->phc->sleep_t);
 	return (true);
 }
 
 bool	thinking(t_philo_attr *ph)
 {
-	print_act_thinking(ph, gettime());
+	print_act_thinking(ph);
 	return (true);
 }
