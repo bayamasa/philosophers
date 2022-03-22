@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 15:09:51 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:17:40 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ bool	destroy_mutex(t_sim_stat *s)
 	}
 	if (pthread_mutex_destroy(&(s->pub_config->m_mutex)) != 0)
 		return (abort_philo_msg(MMUTEX_DESTROY_ERROR));
+	return (true);
 }
 
 bool	start_simulation(t_sim_stat *s)
