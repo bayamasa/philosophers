@@ -6,26 +6,26 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 23:25:46 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:21:42 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	print_all_fork_status(t_sim_stat *a)
+void	print_all_fork_status(t_philo_attr *ph)
 {
 	size_t	i;
 
 	i = 0;
-	printf("a->fork_count = %zu \n", a->fork_count);
+	printf("a->fork_count = %zu \n", ph->phc->fork_count);
 	printf("print_all_fork_status start\n");
-	while (i < a->fork_count)
+	while (i < ph->phc->fork_count)
 	{
-		if (a->is_fork_taken[i] == false)
+		if (ph->phc->is_fork_taken[i] == false)
 		{
 			printf("is_fork_taken[%zu] = %s\n", i,"false");
 		}
-		else if (a->is_fork_taken[i] == true)
+		else if (ph->phc->is_fork_taken[i] == true)
 		{
 			printf("is_fork_taken[%zu] = %s\n", i,"true");
 		}
@@ -48,18 +48,18 @@ void	print_act_takedown_fork(size_t philo, size_t time)
 	printf("%zu %zu has taken down a fork debug\n", time, philo);
 }
 
-void	debug_all_fork_normal(t_sim_stat *s)
+void	debug_all_fork_normal(t_philo_attr *ph)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < s->fork_count)
+	while (i < ph->phc->fork_count)
 	{
-		if (s->is_fork_taken[i] == false)
+		if (ph->phc->is_fork_taken[i] == false)
 		{
 			printf("is_fork_taken[%zu] = %s\n", i,"false");
 		}
-		else if (s->is_fork_taken[i] == true)
+		else if (ph->phc->is_fork_taken[i] == true)
 		{
 			printf("is_fork_taken[%zu] = %s\n", i,"true");
 		}
@@ -71,9 +71,9 @@ void	debug_all_fork_normal(t_sim_stat *s)
 	}
 }
 
-void	print_args(t_sim_stat *s)
+void	print_args(t_philo_attr *ph)
 {
-	printf("time to death : %zu\n", s->p_attr->die_t);
-	printf("time to sleep : %zu\n", s->p_attr->sleep_t);
-	printf("time to eat : %zu\n", s->p_attr->eat_t);
+	printf("time to death : %zu\n", ph->pc->die_t);
+	printf("time to sleep : %zu\n", ph->phc->sleep_t);
+	printf("time to eat : %zu\n", ph->phc->eat_t);
 }

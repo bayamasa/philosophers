@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:42:14 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 22:44:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:34:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ bool	abort_philo_msg(char *msg)
 	return (false);
 }
 
-bool	abort_philo_msg_with_free(char *msg, t_sim_stat *s)
+bool	abort_philo_msg_with_free(char *msg, t_sim_stat *ph)
 {
-	free_all(s);
+	// free_all(ph);
+	(void)ph;
+	perror("");
 	ft_putstr_fd(ERROR, STDERR_FILENO);
 	ft_putstr_fd(msg, STDERR_FILENO);
 	return (false);
@@ -29,10 +31,11 @@ bool	abort_philo_msg_with_free(char *msg, t_sim_stat *s)
 
 void	free_all(t_sim_stat *s)
 {
-	if (s->p_attr != NULL)
-		free(s->p_attr);
-	if (s->is_fork_taken != NULL)
-		free(s->is_fork_taken);
-	if (s->fork_mutex != NULL)
-		free(s->fork_mutex);
+	(void)s;
+	// if (ph->p_attr != NULL)
+	// 	free(ph->p_attr);
+	// if (ph->is_fork_taken != NULL)
+	// 	free(ph->is_fork_taken);
+	// if (ph->fork_mutex != NULL)
+	// 	free(ph->fork_mutex);
 }
