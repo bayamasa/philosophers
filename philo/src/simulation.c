@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:11:56 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:09:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ bool	is_anyone_dead(t_public_config *pc)
 	return (false);
 }
 
+bool	destroy_mutex(t_sim_stat *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < s->pub_config->philo_count)
+	{
+		if (pthread_mutex_destroy(&(s->ph_config->fork_mutex[i])) != 0)
+			return (abort_philo_msg(FMUTEX_DESTROY_ERROR));
+		i++;
+	}
+	if (pthread_mutex_destroy(&(s->pub_config->m_mutex)) != 0)
+		return (abort_philo_msg(MMUTEX_DESTROY_ERROR));
+}
+
 bool	start_simulation(t_sim_stat *s)
 {
 	size_t			i;
@@ -62,19 +77,9 @@ bool	start_simulation(t_sim_stat *s)
 		return (abort_philo_msg_with_free(JOIN_THREAD_ERROR, s));
 	i = 0;
 	while (i < pc->philo_count)
-	{
-		if (pthread_join(s->ph_attr[i]->thread, NULL) != 0)
+		if (pthread_join(s->ph_attr[i++]->thread, NULL) != 0)
 			return (abort_philo_msg_with_free(DETACH_THREAD_ERROR, s));
-		i++;
-	}
-	i = 0;
-	while (i < pc->philo_count)
-	{
-		if (pthread_mutex_destroy(&(s->ph_config->fork_mutex[i])) != 0)
-			return (abort_philo_msg_with_free(FMUTEX_DESTROY_ERROR, s));
-		i++;
-	}
-	if (pthread_mutex_destroy(&(s->pub_config->m_mutex)) != 0)
-		return (abort_philo_msg_with_free(MMUTEX_DESTROY_ERROR, s));
+	if (!destroy_mutex(s))
+		return (false);
 	return (true);
 }

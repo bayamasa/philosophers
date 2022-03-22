@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:21:42 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:24:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	print_all_fork_status(t_philo_attr *ph)
 	{
 		if (ph->phc->is_fork_taken[i] == false)
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"false");
+			printf("is_fork_taken[%zu] = %s\n", i, "false");
 		}
 		else if (ph->phc->is_fork_taken[i] == true)
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"true");
+			printf("is_fork_taken[%zu] = %s\n", i, "true");
 		}
 		else
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"undefined");
+			printf("is_fork_taken[%zu] = %s\n", i, "undefined");
 		}
 		i++;
 	}
@@ -57,15 +57,15 @@ void	debug_all_fork_normal(t_philo_attr *ph)
 	{
 		if (ph->phc->is_fork_taken[i] == false)
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"false");
+			printf("is_fork_taken[%zu] = %s\n", i, "false");
 		}
 		else if (ph->phc->is_fork_taken[i] == true)
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"true");
+			printf("is_fork_taken[%zu] = %s\n", i, "true");
 		}
 		else
 		{
-			printf("is_fork_taken[%zu] = %s\n", i,"undefined");
+			printf("is_fork_taken[%zu] = %s\n", i, "undefined");
 		}
 		i++;
 	}

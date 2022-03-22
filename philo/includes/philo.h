@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:19:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:25:52 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int			ft_isspace(char a);
 // philo_utils_3.c
 bool		lock(pthread_mutex_t *mutex);
 bool		unlock(pthread_mutex_t *mutex);
-bool		is_forks_unused(t_philo_attr *ph, size_t r, size_t l);
 void		*ft_memset(void *buf, int ch, size_t n);
 
 // error_handling.c

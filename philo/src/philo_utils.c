@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:06:06 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:30:40 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:22:57 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ size_t	ft_atoi(const char *str)
 	ret = ft_strtoll(str, &status);
 	return (ret);
 }
+
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	len;
@@ -62,8 +63,6 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 	write(fd, s + i, len);
 }
-
-
 
 long long	ft_strtoll(const char *str, int *status)
 {

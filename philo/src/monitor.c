@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 12:39:01 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:15:47 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ bool	is_philo_dead(t_monitor_attr *m, size_t philo_i)
 	if (gettime() - m->ph_attr[philo_i]->ate_t > m->pc->die_t)
 		return (true);
 	return (false);
+}
+
+void	*act_philo_died(t_monitor_attr *m, size_t i)
+{
+	m->pc->is_anyone_dead = true;
+	print_act_died(m->ph_attr[i]->num, gettime());
+	unlock(&(m->pc->m_mutex));
+	return (NULL);
 }
 
 void	*monitor_philo(void *attr)
@@ -33,24 +41,16 @@ void	*monitor_philo(void *attr)
 			if (!lock(&(m->pc->m_mutex)))
 				return (NULL);
 			if (is_philo_dead(m, i))
-			{
-				m->pc->is_anyone_dead = true;
-				print_act_died(m->ph_attr[i]->num, gettime());
-				if (!unlock(&(m->pc->m_mutex)))
-					return (NULL);
-				return (NULL);
-			}
+				return (act_philo_died(m, i));
 			if (m->pc->eat_limit_surpassed)
 			{
-				if (!unlock(&(m->pc->m_mutex)))
-					return (NULL);
+				unlock(&(m->pc->m_mutex));
 				return (NULL);
 			}
 			if (!unlock(&(m->pc->m_mutex)))
 				return (NULL);
 			i++;
 		}
-		// usleep(900);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:08:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:24:43 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ bool	eating(t_philo_attr *ph)
 {
 	print_act_eating(ph, gettime());
 	usleep(ph->phc->eat_t);
-
 	if (!take_down_forks(ph))
 		return (false);
 	return (true);
