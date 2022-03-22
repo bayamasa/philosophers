@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 13:04:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:19:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 # include <stdbool.h>
 # include <string.h>
 # include <sys/time.h>
-// TODO: 後で消すこと
-# include <errno.h>
-
+//TODO:あとで消す
+# include "errno.h"
 
 # define NUMBER_OF_PHILOSOPHERS 1
 # define TIME_TO_DIE 2
@@ -44,12 +43,8 @@
 # define MUTEX_INIT_ERROR "mutex init error\n"
 
 typedef struct s_philo_config {
-	// philo threadのみで使うconfigの設定
 	size_t			fork_count;
 	bool			*is_fork_taken;
-	// t_philo_attr	*p_attr;
-	// size_t			thread_i;
-	// pthread_mutex_t	init_mutex;
 	size_t			eat_t;
 	size_t			sleep_t;
 	pthread_mutex_t	*fork_mutex;
@@ -57,7 +52,6 @@ typedef struct s_philo_config {
 
 typedef struct s_public_config
 {
-	// philo, monitorどちらでも使うconfig
 	bool			eat_limit_exist;
 	bool			eat_limit_surpassed;
 	size_t			eat_limit;
