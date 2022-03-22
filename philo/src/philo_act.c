@@ -6,32 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 21:35:46 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:30:28 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-bool	finish_thread(t_philo_attr *ph)
-{
-	size_t	right_i;
-	size_t	left_i;
-
-	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
-	unlock(&(ph->phc->fork_mutex[right_i]));
-	unlock(&(ph->phc->fork_mutex[left_i]));
-	return (false);
-}
-
-bool	finish_thread_when_taken_one_fork(t_philo_attr *ph)
-{
-	size_t	right_i;
-	size_t	left_i;
-
-	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
-	unlock(&(ph->phc->fork_mutex[right_i]));
-	return (false);
-}
 
 bool	take_forks(t_philo_attr *ph)
 {

@@ -106,6 +106,8 @@ int			ft_isspace(char a);
 bool		lock(pthread_mutex_t *mutex);
 bool		unlock(pthread_mutex_t *mutex);
 void		*ft_memset(void *buf, int ch, size_t n);
+bool		finish_thread(t_philo_attr *ph);
+bool		finish_thread_when_taken_one_fork(t_philo_attr *ph);
 
 // error_handling.c
 bool		abort_philo_msg(char *msg);

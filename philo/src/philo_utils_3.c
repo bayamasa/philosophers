@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:48:03 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:25:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:30:45 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,25 @@ void	*ft_memset(void *buf, int ch, size_t n)
 		i++;
 	}
 	return (dest);
+}
+
+bool	finish_thread(t_philo_attr *ph)
+{
+	size_t	right_i;
+	size_t	left_i;
+
+	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
+	unlock(&(ph->phc->fork_mutex[right_i]));
+	unlock(&(ph->phc->fork_mutex[left_i]));
+	return (false);
+}
+
+bool	finish_thread_when_taken_one_fork(t_philo_attr *ph)
+{
+	size_t	right_i;
+	size_t	left_i;
+
+	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
+	unlock(&(ph->phc->fork_mutex[right_i]));
+	return (false);
 }
