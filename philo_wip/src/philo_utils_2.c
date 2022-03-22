@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:17:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:57:14 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,18 @@ bool	is_eat_limit_surpassed(t_public_config *pc)
 {
 	if (pc->eat_limit_exist == false)
 		return (false);
+	if (!lock(&pc->m_mutex))
+		return (false);
+	pc->eat_count += 1;
 	if (pc->eat_count >= pc->eat_limit)
 	{
 		pc->eat_limit_surpassed = true;
+		if (!unlock(&pc->m_mutex))
+			return (false);
 		return (true);
 	}
+	if (!unlock(&pc->m_mutex))
+		return (false);
 	return (false);
 }
 

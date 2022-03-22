@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:25:10 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:08:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,20 @@ bool	take_forks(t_philo_attr *ph)
 	size_t	left_i;
 
 	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
-	if (!lock(ph->phc->fork_mutex[right_i]))
+	if (!lock(&(ph->phc->fork_mutex[right_i])))
 		return (false);
-	while (true)
+	if (ph->phc->is_fork_taken[right_i] == false)
 	{
-		if (ph->phc->is_fork_taken[right_i] == false)
-		{
-			ph->phc->is_fork_taken[right_i] = true;
-			break ;
-		}
+		ph->phc->is_fork_taken[right_i] = true;
+		print_act_take_fork(ph, gettime());
 	}
-	if (!lock(ph->phc->fork_mutex[left_i]))
+	if (!lock(&(ph->phc->fork_mutex[left_i])))
 		return (false);
-	while (true)
+	if (ph->phc->is_fork_taken[left_i] == false)
 	{
-		if (ph->phc->is_fork_taken[left_i] == false)
-		{
-			ph->phc->is_fork_taken[left_i] = true;
-			break ;
-		}
+		ph->phc->is_fork_taken[left_i] = true;
+		print_act_take_fork(ph, gettime());
 	}
-	print_act_take_fork(ph, gettime());
 	return (true);
 }
 
@@ -46,13 +39,7 @@ bool	eating(t_philo_attr *ph)
 {
 	print_act_eating(ph, gettime());
 	usleep(ph->phc->eat_t);
-	if (!lock(ph->pc->m_mutex))
-		return (false);
-	ph->pc->eat_count++;
-	if (is_eat_limit_surpassed(ph->pc))
-		return (false);
-	if (!unlock(ph->pc->m_mutex))
-		return (false);
+
 	if (!take_down_forks(ph))
 		return (false);
 	return (true);
@@ -64,25 +51,21 @@ bool	take_down_forks(t_philo_attr *ph)
 	size_t	left_i;
 
 	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
-	while (true)
+	if (is_eat_limit_surpassed(ph->pc))
 	{
-		if (ph->phc->is_fork_taken[right_i] == true)
-		{
-			ph->phc->is_fork_taken[right_i] = false;
-			break ;
-		}
-	}
-	if (!unlock(ph->phc->fork_mutex[right_i]))
+		if (!unlock(&(ph->phc->fork_mutex[right_i])))
+			return (false);
+		if (!unlock(&(ph->phc->fork_mutex[left_i])))
+			return (false);
 		return (false);
-	while (true)
-	{	
-		if (ph->phc->is_fork_taken[left_i] == true)
-		{
-			ph->phc->is_fork_taken[left_i] = false;
-			break ;
-		}
 	}
-	if (!unlock(ph->phc->fork_mutex[left_i]))
+	if (ph->phc->is_fork_taken[right_i] == true)
+		ph->phc->is_fork_taken[right_i] = false;
+	if (!unlock(&(ph->phc->fork_mutex[right_i])))
+		return (false);
+	if (ph->phc->is_fork_taken[left_i] == true)
+		ph->phc->is_fork_taken[left_i] = false;
+	if (!unlock(&(ph->phc->fork_mutex[left_i])))
 		return (false);
 	return (true);
 }
