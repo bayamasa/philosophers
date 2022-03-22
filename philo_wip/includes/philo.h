@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:32:51 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:04:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 # define CREATE_THREAD_ERROR "create thread error\n"
 # define JOIN_THREAD_ERROR "join thread error\n"
 # define DETACH_THREAD_ERROR "detach thread error\n"
-# define MUTEX_DESTROY_ERROR "mutex destroy error\n"
+# define MMUTEX_DESTROY_ERROR "monitor mutex destroy error\n"
+# define FMUTEX_DESTROY_ERROR "fork mutex destroy error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 # define MUTEX_INIT_ERROR "mutex init error\n"
 
@@ -108,8 +109,8 @@ bool		is_eat_limit_surpassed(t_public_config *pc);
 int			ft_isspace(char a);
 
 // philo_utils_3.c
-bool		lock(pthread_mutex_t mutex);
-bool		unlock(pthread_mutex_t mutex);
+bool		lock(pthread_mutex_t *mutex);
+bool		unlock(pthread_mutex_t *mutex);
 bool		is_forks_unused(t_philo_attr *ph, size_t r, size_t l);
 void		*ft_memset(void *buf, int ch, size_t n);
 

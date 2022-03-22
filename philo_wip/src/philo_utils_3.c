@@ -6,15 +6,15 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:48:03 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:21:20 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:44:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-bool	lock(pthread_mutex_t mutex)
+bool	lock(pthread_mutex_t *mutex)
 {
-	if (pthread_mutex_lock(&mutex) != 0)
+	if (pthread_mutex_lock(mutex) != 0)
 	{
 		printf("lock error; : %s\n", strerror(errno));
 		return (false);
@@ -22,9 +22,9 @@ bool	lock(pthread_mutex_t mutex)
 	return (true);
 }
 
-bool	unlock(pthread_mutex_t mutex)
+bool	unlock(pthread_mutex_t *mutex)
 {
-	if (pthread_mutex_unlock(&mutex) != 0)
+	if (pthread_mutex_unlock(mutex) != 0)
 	{
 		printf("unlock error; : %s\n", strerror(errno));
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:42:14 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/21 20:31:36 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:34:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ bool	abort_philo_msg_with_free(char *msg, t_sim_stat *ph)
 {
 	// free_all(ph);
 	(void)ph;
+	perror("");
 	ft_putstr_fd(ERROR, STDERR_FILENO);
 	ft_putstr_fd(msg, STDERR_FILENO);
 	return (false);
