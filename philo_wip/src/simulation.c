@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 13:38:24 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:11:56 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,15 @@ bool	start_simulation(t_sim_stat *s)
 	i = 0;
 	while (i < pc->philo_count)
 	{
-		if (pthread_detach(s->ph_attr[i]->thread) != 0)
+		if (pthread_join(s->ph_attr[i]->thread, NULL) != 0)
 			return (abort_philo_msg_with_free(DETACH_THREAD_ERROR, s));
-		// if (pthread_join(s->ph_attr[i]->thread, NULL) != 0)
-		// 	return (abort_philo_msg_with_free(DETACH_THREAD_ERROR, s));
 		i++;
 	}
 	i = 0;
 	while (i < pc->philo_count)
 	{
-		if (!unlock(&(s->ph_config->fork_mutex[i])))
-			return (false);
-		usleep(300);
-		printf(" = %d\n", pthread_mutex_destroy(&(s->ph_config->fork_mutex[i]))); 
-		// perror("");
-			// return (abort_philo_msg_with_free(FMUTEX_DESTROY_ERROR, s));
+		if (pthread_mutex_destroy(&(s->ph_config->fork_mutex[i])) != 0)
+			return (abort_philo_msg_with_free(FMUTEX_DESTROY_ERROR, s));
 		i++;
 	}
 	if (pthread_mutex_destroy(&(s->pub_config->m_mutex)) != 0)
