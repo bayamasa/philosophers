@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:06:06 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 20:15:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:30:40 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ size_t	ft_atoi_error(const char *str, int *status)
 	return (ret);
 }
 
+size_t	ft_atoi(const char *str)
+{
+	long long	ret;
+	int			status;
+
+	if (ft_strlen(str) == 0 || !ft_isdigit(*str))
+		status = false;
+	if (*str == '0')
+		if (ft_strlen(str) != 1)
+			status = false;
+	ret = ft_strtoll(str, &status);
+	return (ret);
+}
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	len;
@@ -50,13 +63,7 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s + i, len);
 }
 
-int	ft_isspace(char a)
-{
-	if (a == '\t' || a == '\n' || a == '\v'
-		|| a == ' ' || a == '\r' || a == '\f' )
-		return (1);
-	return (0);
-}
+
 
 long long	ft_strtoll(const char *str, int *status)
 {
