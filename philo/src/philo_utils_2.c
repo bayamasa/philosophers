@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 13:57:14 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 21:47:50 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	gettime(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	time = tv.tv_sec * USEC_DIGITS + tv.tv_usec;
+	time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	return (time);
 }
 
