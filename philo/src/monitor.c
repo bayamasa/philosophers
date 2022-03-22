@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 15:15:47 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:03:29 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	is_philo_dead(t_monitor_attr *m, size_t philo_i)
 void	*act_philo_died(t_monitor_attr *m, size_t i)
 {
 	m->pc->is_anyone_dead = true;
-	print_act_died(m->ph_attr[i]->num, gettime());
+	print_act_died(m->ph_attr[i]->num);
 	unlock(&(m->pc->m_mutex));
 	return (NULL);
 }
