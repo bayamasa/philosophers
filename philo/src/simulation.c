@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 22:14:59 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 00:36:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ void	xusleep(size_t eat_t)
 	size_t	cycle_time;
 
 	i = 0;
-	cycle_time = eat_t / 200;
+	cycle_time = eat_t / 1000;
+	// printf("cycle_time = %zu\n", cycle_time);
 	while (i < cycle_time)
 	{
-		usleep(200);
+		usleep(1000);
 		i++;
 	}
 }
@@ -32,19 +33,23 @@ void	*start_philo_act(void *ph_attr)
 
 	ph = (t_philo_attr *)ph_attr;
 	if (ph->num % 2 == 0)
-		xusleep(ph->phc->eat_t);
+		xusleep(ph->phc->eat_t + (ph->phc->eat_t / 100LL));
+	if (ph->pc->philo_count == 1)
+		return (take_fork(ph));
 	while (true)
 	{
 		if (!take_forks(ph))
 			break ;
 		if (!eating(ph))
 			break ;
+		if (!take_down_forks(ph))
+			break ;
 		if (!sleeping(ph))
 			break ;
 		if (!thinking(ph))
 			break ;
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 bool	is_anyone_dead(t_public_config *pc)

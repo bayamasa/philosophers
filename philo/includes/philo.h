@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 22:35:07 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/22 23:49:10 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ bool		print_act_thinking(t_philo_attr *ph);
 bool		print_act_died(size_t philo);
 
 // act.c
+void		*take_fork(t_philo_attr *ph);
 bool		take_forks(t_philo_attr *ph);
 bool		take_down_forks(t_philo_attr *ph);
 bool		eating(t_philo_attr *ph);

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:58:39 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:22:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 00:04:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool	init_pub_config(t_public_config *pc, const char *argv[])
 		pc->eat_limit_exist = false;
 		pc->eat_limit = 0;
 	}
-	pc->die_t = ft_atoi(argv[TIME_TO_DIE]) * 1000LL;
+	pc->die_t = ft_atoi(argv[TIME_TO_DIE]);
 	if (pthread_mutex_init(&(pc->m_mutex), NULL) == -1)
 		return (false);
 	return (true);

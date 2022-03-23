@@ -6,11 +6,18 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 22:30:28 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 09:10:22 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	*take_fork(t_philo_attr *ph)
+{
+	print_act_take_fork(ph);
+	xusleep(ph->pc->die_t * 2);
+	return (NULL);
+}
 
 bool	take_forks(t_philo_attr *ph)
 {
@@ -36,8 +43,6 @@ bool	eating(t_philo_attr *ph)
 	if (!print_act_eating(ph))
 		return (finish_thread(ph));
 	xusleep(ph->phc->eat_t);
-	if (!take_down_forks(ph))
-		return (false);
 	return (true);
 }
 
@@ -48,9 +53,7 @@ bool	take_down_forks(t_philo_attr *ph)
 
 	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
 	if (is_eat_limit_surpassed(ph->pc))
-	{
 		return (finish_thread(ph));
-	}
 	if (ph->phc->is_fork_taken[right_i] == true)
 		ph->phc->is_fork_taken[right_i] = false;
 	if (!unlock(&(ph->phc->fork_mutex[right_i])))
