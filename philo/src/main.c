@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 12:26:02 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:33:08 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	main(int argc, char const *argv[])
 
 __attribute__((destructor))
 static void destructor(){
-	system("leaks -q minishell");
+	system("leaks -q philo");
 }
