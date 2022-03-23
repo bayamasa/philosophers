@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 00:05:32 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:11:38 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	is_philo_dead(t_monitor_attr *m, size_t philo_i)
 {
-	// printf("mpc->die_t = %zu\n", m->pc->die_t);
 	if (gettime() - m->ph_attr[philo_i]->ate_t > m->pc->die_t)
 		return (true);
 	return (false);

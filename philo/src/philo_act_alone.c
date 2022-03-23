@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo_act_alone.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 12:26:02 by mhirabay         ###   ########.fr       */
+/*   Created: 2022/03/23 12:13:44 by mhirabay          #+#    #+#             */
+/*   Updated: 2022/03/23 12:14:09 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char const *argv[])
+void	*take_fork(t_philo_attr *ph)
 {
-	t_sim_stat	sim_stat;
-
-	if (!check_args(argc, argv))
-		return (EXIT_FAILURE);
-	if (!init(&sim_stat, argv))
-		return (EXIT_FAILURE);
-	if (!start_simulation(&sim_stat))
-		return (EXIT_FAILURE);
-	free_all(&sim_stat);
-	return (EXIT_SUCCESS);
-}
-
-__attribute__((destructor))
-static void destructor(){
-	system("leaks -q minishell");
+	print_act_take_fork(ph);
+	xusleep(ph->pc->die_t * 2);
+	return (NULL);
 }

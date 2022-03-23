@@ -6,13 +6,14 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/03/21 20:32:04 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/03/23 12:15:20 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= philo
 SRCDIR 	:= ./src/
 SRCNAME	:=	philo_act.c \
+			philo_act_alone.c \
 			args_handling.c \
 			debug.c \
 			error_handling.c \

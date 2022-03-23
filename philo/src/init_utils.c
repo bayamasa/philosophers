@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:58:39 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 09:35:08 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:10:22 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,8 @@ bool	init_philo_config(t_philo_config *ph, const char *argv[])
 		return (false);
 	while (i < ph->fork_count)
 		ph->is_fork_taken[i++] = false;
-	// ph->eat_t = ft_atoi(argv[TIME_TO_EAT]) * 1000LL;
 	ph->eat_t = ft_atoi(argv[TIME_TO_EAT]);
 	ph->sleep_t = ft_atoi(argv[TIME_TO_SLEEP]);
-	// ph->sleep_t = ft_atoi(argv[TIME_TO_SLEEP]) * 1000LL;
 	return (true);
 }
 
