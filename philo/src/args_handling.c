@@ -6,20 +6,18 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/31 19:53:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:03:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-// msgを個別に定義するために、第3引数にmsgをポインタでもってもいいかも。
 void	validate_philo_count(const char *str, int *status)
 {
 	size_t	val;
 
 	val = ft_atoi_error(str, status);
-	// valは1以上である。
-	if (val <= 0)
+	if (val < 1)
 		*status = false;
 }
 
@@ -28,8 +26,7 @@ void	validate_time(const char *str, int *status)
 	int	val;
 
 	val = ft_atoi_error(str, status);
-	// timeは1以上とする
-	if (val <= 0)
+	if (val < 1)
 		*status = false;
 }
 
@@ -38,8 +35,7 @@ void	validate_eat_limit(const char *str, int *status)
 	int	val;
 
 	val = ft_atoi_error(str, status);
-	// eat_limitは1以上である(予定)
-	if (val <= 0)
+	if (val < 1)
 		*status = false;
 }
 
