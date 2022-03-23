@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 00:36:21 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 09:38:35 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 
 void	xusleep(size_t eat_t)
 {
-	size_t	i;
-	size_t	cycle_time;
+	size_t	start_time;
 
-	i = 0;
-	cycle_time = eat_t / 1000;
-	// printf("cycle_time = %zu\n", cycle_time);
-	while (i < cycle_time)
-	{
-		usleep(1000);
-		i++;
-	}
+	start_time = gettime();
+	while (gettime() - start_time < eat_t)
+		usleep(100);
 }
 
 void	*start_philo_act(void *ph_attr)
