@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 23:49:10 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 09:50:55 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ bool		init_all_config(t_sim_stat *s, const char *argv[]);
 // debug.c
 void		print_all_fork_status(t_philo_attr *ph);
 void		debug_thread_start(size_t count);
-void		print_act_takedown_fork(size_t philo, size_t time);
 void		debug_all_fork_normal(t_philo_attr *ph);
 void		print_args(t_philo_attr *ph);
+void		print_gettime(size_t time);
 
 // simulation.c
 bool		start_simulation(t_sim_stat *a);

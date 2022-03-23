@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:48:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 14:24:21 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/23 09:50:44 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ void	debug_thread_start(size_t count)
 	printf("thread num = %zu start\n", count);
 }
 
-void	print_act_takedown_fork(size_t philo, size_t time)
-{
-	printf("%zu %zu has taken down a fork debug\n", time, philo);
-}
-
 void	debug_all_fork_normal(t_philo_attr *ph)
 {
 	size_t	i;
@@ -76,4 +71,9 @@ void	print_args(t_philo_attr *ph)
 	printf("time to death : %zu\n", ph->pc->die_t);
 	printf("time to sleep : %zu\n", ph->phc->sleep_t);
 	printf("time to eat : %zu\n", ph->phc->eat_t);
+}
+
+void	print_gettime(size_t time)
+{
+	printf("%zu\n", time);
 }
