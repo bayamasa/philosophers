@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/24 11:40:41 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:49:35 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	validate_philo_count(const char *str, int *status)
 	long	val;
 
 	val = ft_atoi_error(str, status);
-	if (val < 1)
+	if (val < 1 || val > PHILO_COUNT_MAX)
 		*status = false;
 }
 

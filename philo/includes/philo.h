@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/24 11:43:45 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 13:40:07 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define TIMES_PHILO_MUST_EAT 5
 
 # define STR_BUFF_SIZE 1000000
-# define USEC_DIGITS 1000000
+# define PHILO_COUNT_MAX 2000
 # define ERROR "Error\n"
 # define ARGS_ERROR "args error\n"
 # define MALLOC_ERROR "malloc error\n"
