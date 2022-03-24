@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:40:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 15:03:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:40:41 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	validate_philo_count(const char *str, int *status)
 {
-	size_t	val;
+	long	val;
 
 	val = ft_atoi_error(str, status);
 	if (val < 1)
@@ -23,19 +23,19 @@ void	validate_philo_count(const char *str, int *status)
 
 void	validate_time(const char *str, int *status)
 {
-	int	val;
+	long	val;
 
 	val = ft_atoi_error(str, status);
-	if (val < 1)
+	if (val < 1 || val > INT_MAX)
 		*status = false;
 }
 
 void	validate_eat_limit(const char *str, int *status)
 {
-	int	val;
+	long	val;
 
 	val = ft_atoi_error(str, status);
-	if (val < 1)
+	if (val < 1 || val > INT_MAX)
 		*status = false;
 }
 

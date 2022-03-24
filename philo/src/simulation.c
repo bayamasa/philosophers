@@ -6,18 +6,18 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 09:32:11 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 15:14:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 10:20:55 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	xusleep(size_t eat_t)
+void	xusleep(size_t time)
 {
 	size_t	start_time;
 
 	start_time = gettime();
-	while (gettime() - start_time < eat_t)
+	while (gettime() - start_time < time)
 		usleep(100);
 }
 

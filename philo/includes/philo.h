@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 12:14:57 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:43:45 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <sys/time.h>
-//TODO:あとで消す
-# include "errno.h"
+# include "limits.h"
 
 # define NUMBER_OF_PHILOSOPHERS 1
 # define TIME_TO_DIE 2
@@ -41,6 +40,8 @@
 # define FMUTEX_DESTROY_ERROR "fork mutex destroy error\n"
 # define CANNOT_TAKEN_FORK "cannot taken the forks\n"
 # define MUTEX_INIT_ERROR "mutex init error\n"
+# define LOCK_ERROR "lock error\n"
+# define UNLOCK_ERROR "unlock error\n"
 
 typedef struct s_philo_config {
 	size_t			fork_count;

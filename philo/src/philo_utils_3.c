@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:48:03 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/22 22:30:45 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:44:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ bool	lock(pthread_mutex_t *mutex)
 {
 	if (pthread_mutex_lock(mutex) != 0)
 	{
-		printf("lock error; : %s\n", strerror(errno));
-		return (false);
+		return (abort_philo_msg(LOCK_ERROR));
 	}
 	return (true);
 }
@@ -26,8 +25,7 @@ bool	unlock(pthread_mutex_t *mutex)
 {
 	if (pthread_mutex_unlock(mutex) != 0)
 	{
-		printf("unlock error; : %s\n", strerror(errno));
-		return (false);
+		return (abort_philo_msg(UNLOCK_ERROR));
 	}
 	return (true);
 }

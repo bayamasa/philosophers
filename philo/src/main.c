@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:44:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 13:33:08 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:27:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 	return (EXIT_SUCCESS);
 }
 
-__attribute__((destructor))
-static void destructor(){
-	system("leaks -q philo");
-}
+// __attribute__((destructor))
+// static void destructor(){
+// 	system("leaks -q philo");
+// }
