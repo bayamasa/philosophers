@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:21:26 by mhirabay          #+#    #+#              #
-#    Updated: 2022/03/23 12:15:20 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/03/24 13:56:31 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,7 @@ OBJSDIR	:= ./obj/
 OBJS 	:= $(addprefix $(OBJSDIR), $(SRCNAME:%.c=%.o))
 
 CC		:= gcc 
-CFLAGS	:= -Wall -Werror -Wextra -g -pthread
-DEBUG	:= -g -fsanitize=thread
+CFLAGS	:= -Wall -Werror -Wextra -pthread
 INC		:= -I ./philo/includes/
 RM		:= rm -rf
 
@@ -53,7 +52,4 @@ fclean: clean
 	${RM} ${NAME} 
 re:	fclean all
 
-debug:	CFLAGS += $(DEBUG)
-debug:	re
-
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re
