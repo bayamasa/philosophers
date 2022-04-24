@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/24 11:16:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 20:21:00 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,40 @@ void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 		*l = p_i - 1;
 }
 
-bool	is_eat_limit_surpassed(t_public_config *pc)
+// bool	is_eat_limit_surpassed(t_public_config *pc)
+// {
+// 	if (pc->eat_limit_exist == false)
+// 		return (false);
+// 	if (!lock(&pc->m_mutex))
+// 		return (false);
+// 	pc->eat_count += 1;
+// 	if (pc->eat_count >= pc->eat_limit)
+// 	{
+// 		pc->eat_limit_surpassed = true;
+// 		if (!unlock(&pc->m_mutex))
+// 			return (false);
+// 		return (true);
+// 	}
+// 	if (!unlock(&pc->m_mutex))
+// 		return (false);
+// 	return (false);
+// }
+
+bool	is_eat_limit_surpassed(t_philo_attr *ph)
 {
-	if (pc->eat_limit_exist == false)
+	if (ph->pc->eat_limit_exist == false)
 		return (false);
-	if (!lock(&pc->m_mutex))
+	if (!lock(&ph->pc->m_mutex))
 		return (false);
-	pc->eat_count += 1;
-	if (pc->eat_count >= pc->eat_limit)
+	ph->times_eaten += 1;
+	if (ph->times_eaten >= ph->pc->eat_limit)
 	{
-		pc->eat_limit_surpassed = true;
-		if (!unlock(&pc->m_mutex))
+		ph->is_eaten = true;
+		if (!unlock(&ph->pc->m_mutex))
 			return (false);
 		return (true);
 	}
-	if (!unlock(&pc->m_mutex))
+	if (!unlock(&ph->pc->m_mutex))
 		return (false);
 	return (false);
 }

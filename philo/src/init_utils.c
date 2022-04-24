@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:58:39 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/03/23 12:10:22 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 20:32:08 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ bool	init_philo_attr(t_sim_stat *s, const char *argv[])
 		s->ph_attr[i]->ate_t = 0;
 		s->ph_attr[i]->phc = s->ph_config;
 		s->ph_attr[i]->pc = s->pub_config;
+		s->ph_attr[i]->times_eaten = 0;
+		s->ph_attr[i]->is_eaten = false;
 		i++;
 	}
 	return (true);
@@ -56,7 +58,6 @@ bool	init_pub_config(t_public_config *pc, const char *argv[])
 	pc->eat_count = 0;
 	pc->is_anyone_dead = false;
 	pc->philo_count = ft_atoi(argv[NUMBER_OF_PHILOSOPHERS]);
-	pc->eat_limit_surpassed = false;
 	if (argv[TIMES_PHILO_MUST_EAT] != NULL)
 	{
 		pc->eat_limit_exist = true;
