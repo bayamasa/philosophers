@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:01:07 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/04/24 20:21:30 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 21:59:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ bool	is_all_philo_eaten_limit(t_monitor_attr *m)
 	size_t	i;
 
 	i = 0;
+	if (!m->pc->eat_limit_exist)
+		return (false);
 	while (i < m->pc->philo_count)
 	{
 		if (!m->ph_attr[i]->is_eaten)
 			return (false);
 		i++;
 	}
+	m->pc->is_all_philo_eaten = true;
 	return (true);
 }
 

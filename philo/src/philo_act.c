@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:12:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/04/24 18:13:31 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 20:56:05 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	take_down_forks(t_philo_attr *ph)
 	size_t	left_i;
 
 	get_forks_position(ph->phc->fork_count, ph->index, &right_i, &left_i);
-	if (is_eat_limit_surpassed(ph))
+	if (!update_times_to_eat(ph))
 		return (finish_thread(ph));
 	if (ph->phc->is_fork_taken[right_i] == true)
 		ph->phc->is_fork_taken[right_i] = false;

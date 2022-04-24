@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:38:46 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/04/24 20:21:11 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 22:26:18 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_public_config
 {
 	bool			eat_limit_exist;
 	size_t			eat_limit;
+	bool			is_all_philo_eaten;
 	size_t			philo_count;
 	size_t			eat_count;
 	size_t			die_t;
@@ -101,8 +102,8 @@ size_t		ft_strlen(const char *str);
 size_t		gettime(void);
 void		get_forks_position(\
 			size_t fork_count, size_t p_i, size_t *r, size_t *l);
-bool		is_eat_limit_surpassed(t_philo_attr *ph);
 int			ft_isspace(char a);
+bool		update_times_to_eat(t_philo_attr *ph);
 
 // philo_utils_3.c
 bool		lock(pthread_mutex_t *mutex);

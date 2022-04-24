@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:40:04 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/04/24 20:38:02 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/04/24 22:09:16 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,26 @@ void	get_forks_position(size_t fork_count, size_t p_i, size_t *r, size_t *l)
 		*l = p_i - 1;
 }
 
-bool	is_eat_limit_surpassed(t_philo_attr *ph)
+bool	update_times_to_eat(t_philo_attr *ph)
 {
 	if (ph->pc->eat_limit_exist == false)
-		return (false);
+		return (true);
 	if (!lock(&ph->pc->m_mutex))
 		return (false);
 	ph->times_eaten += 1;
 	if (ph->times_eaten >= ph->pc->eat_limit)
 	{
 		ph->is_eaten = true;
-		if (!unlock(&ph->pc->m_mutex))
+		if (ph->pc->is_all_philo_eaten)
+		{
+			if (!unlock(&ph->pc->m_mutex))
+				return (false);
 			return (false);
-		return (true);
+		}
 	}
 	if (!unlock(&ph->pc->m_mutex))
 		return (false);
-	return (false);
+	return (true);
 }
 
 int	ft_isspace(char a)
